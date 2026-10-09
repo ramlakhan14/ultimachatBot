@@ -1,0 +1,33 @@
+.tableHd th{
+    font-size: 16px;
+    color: #6C757D;
+  }
+
+.tableTd td{
+    font-size: 14px;
+    color: #1A202C;
+  }
+
+  .projectCount{
+    padding: 4.2px 7.8px;
+    border-radius: 100px;
+    background-color: #ff000020;
+    color: red;
+    font-size: 12px;
+  }
+  th{
+    font-size: 14px!important;
+    text-transform: capitalize!important;
+    font-weight: 500!important;
+  }
+  td{
+    font-size: 14px!important;
+  }
+
+   .inActive{
+    padding: 4.2px 7.8px;
+    border-radius: 100px;
+    background-color: #FEF9C3;
+    color: #854D0E;
+    font-size: 12px;
+  }

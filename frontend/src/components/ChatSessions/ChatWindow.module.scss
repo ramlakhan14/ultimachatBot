@@ -1,0 +1,18 @@
+.meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.metaItem {
+    margin-right: 4px;
+    align-items: center;
+    svg {
+        margin-right: 4px;
+    }
+}
+
+
+.readBtn{
+    border: none !important;
+    background: transparent !important;
+}

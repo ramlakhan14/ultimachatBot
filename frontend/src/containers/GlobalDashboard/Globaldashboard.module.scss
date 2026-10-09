@@ -1,0 +1,83 @@
+.voiceDashCard{
+  overflow: hidden;
+}
+
+.voiceDashCard {
+  overflow: hidden;
+  user-select: none;         /* ✅ correct */
+  -webkit-user-select: none; /* ✅ Safari */
+  -moz-user-select: none;    /* ✅ Firefox */
+  -ms-user-select: none;     /* ✅ old Edge/IE */
+}
+.voiceDashCardInitiated, .voiceDashCardRunning, .voiceDashCardCompleted, .voiceDashCardPending, .voiceDashCardFailed {
+  overflow: hidden;
+  user-select: none;         /* ✅ correct */
+  -webkit-user-select: none; /* ✅ Safari */
+  -moz-user-select: none;    /* ✅ Firefox */
+  -ms-user-select: none;     /* ✅ old Edge/IE */
+}
+.voiceDashCard:hover svg g, .voiceDashCard:hover .svgexport2{
+  opacity: 1 !important;
+  transition: all .2s ease-in-out;
+  transform: translate("-10px, 0");
+}
+.voiceDashCardInitiated::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(0px, -50%);
+  // width: 4px;
+  height: 20px;
+  border:2px solid #CA6510;
+  z-index: 1;
+  border-radius: 50px;
+}
+.voiceDashCardRunning::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(0px, -50%);
+  // width: 4px;
+  height: 20px;
+  border:2px solid #1E40AF;
+  z-index: 1;
+  border-radius: 50px;
+}
+.voiceDashCardCompleted::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(0px, -50%);
+  // width: 4px;
+  height: 20px;
+  border:2px solid #198754;
+  z-index: 1;
+  border-radius: 50px;
+}
+.voiceDashCardPending::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(0px, -50%);
+  // width: 4px;
+  height: 20px;
+  border:2px solid #854D0E;
+  z-index: 1;
+  border-radius: 50px;
+}
+.voiceDashCardFailed::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(0px, -50%);
+  // width: 4px;
+  height: 20px;
+  border:2px solid #991B1B;
+  z-index: 1;
+  border-radius: 50px;
+}

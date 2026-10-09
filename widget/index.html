@@ -1,0 +1,2293 @@
+<html lang="en">
+
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>UltimaBot Live Chat</title>
+        <base target="_parent">
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link
+            href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css"
+            rel="stylesheet" />
+        <script
+            src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+        <link rel="stylesheet" href="app.css">
+    </head>
+
+    <body>
+        <!--A bot markup with a launcher to open and close vhat widget-->
+        <div class="chat-wrap chat-wrap-ai-assistant" id="chat-wrap"
+            style="opacity: 0">
+
+            <div class="chat-launcher" id="chat-launcher" style="opacity: 0">
+                <button class="chat-launcher-btn"
+                    id="chat-launcher-btn">
+                </button>
+            </div>
+            <div class="chat-widget">
+                <div class="chat-header">
+                    <div class="chat-header-top">
+                        <div class="chat-tabs" id="chat-tabs">
+                            <button id="tab-ai-assistant">AI assistant</button>
+                            <button id="tab-offline-msg">Offline
+                                message</button>
+                            <div class="tabs-active" id="tabs-active"></div>
+                        </div>
+                        <div class="chat-actions" id="chat-actions">
+                            <button class="chat-minimize-btn chat-actions-btn"
+                                id="chat-minimize-btn">
+                                <svg stroke="currentColor" fill="none"
+                                    stroke-width="2" viewBox="0 0 24 24"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round" height="1em"
+                                    width="1em"
+                                    xmlns="http://www.w3.org/2000/svg" style="
+                                width: 22px;
+                                height: 22px;
+                            ">
+                                    <path stroke="none" d="M0 0h24v24H0z"
+                                        fill="none"></path>
+                                    <path
+                                        d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z">
+                                    </path>
+                                    <path d="M9 4v16"></path>
+                                    <path d="M14 10l2 2l-2 2"></path>
+                                </svg>
+                            </button>
+                            <button class="chat-maximize-btn chat-actions-btn"
+                                id="chat-maximize-btn">
+                                <svg stroke="currentColor" fill="none"
+                                    stroke-width="2" viewBox="0 0 24 24"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round" height="1em"
+                                    width="1em"
+                                    xmlns="http://www.w3.org/2000/svg" style="
+                        width: 22px;
+                        height: 22px;
+                    ">
+                                    <path stroke="none" d="M0 0h24v24H0z"
+                                        fill="none"></path>
+                                    <path
+                                        d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z">
+                                    </path>
+                                    <path d="M15 4v16"></path>
+                                    <path d="M10 10l-2 2l2 2"></path>
+                                </svg>
+                            </button>
+                            <button title="Clear chat history"
+                                class="chat-clear-session-btn chat-actions-btn"
+                                id="chat-clear-session-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="feather feather-refresh-ccw">
+                                    <polyline points="1 4 1 10 7 10"></polyline>
+                                    <polyline
+                                        points="23 20 23 14 17 14"></polyline>
+                                    <path
+                                        d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path>
+                                </svg>
+                            </button>
+                            <button class="chat-close-btn chat-actions-btn"
+                                id="chat-close-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="feather feather-x">
+                                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="ai-assistant-header">
+                        <h2 id="chat-heading">
+                            I'm your AI assistant
+                        </h2>
+                        <p id="chat-description">Ask me anything. I can answer
+                            same like chatGPT but with the data from this
+                            website</p>
+                    </div>
+                    <div class="offline-message-header">
+                        <h2 id="offline-message-heading">
+                            Offline message
+                        </h2>
+                        <p id="offline-message-description">Please fill out the
+                            form below and we will get back to you as
+                            soon as possible.</p>
+                    </div>
+
+                </div>
+                <div id="video-player" class="video-player">
+                    <button id="video-cls-btn" class="custom-btn"
+                        onclick="handleCustomBtn()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-x">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+                <div id="chat-messages" class="chat-messages">
+                </div>
+                <div id="offline-message" class="offline-message">
+                    <div class="form-group">
+                        <label for="offline-message-name"><span
+                                id="label-offline-message-name">Name</span>
+                            <span
+                                class="form-required">*</span></label>
+                        <input type="text" class="form-control"
+                            id="offline-message-name"
+                            placeholder="Enter your name">
+                        <!--Error message-->
+                        <div class="invalid-feedback required-field"
+                            id="invalid-feedback-name">This field is
+                            required</div>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="offline-message-email"><span
+                                id="label-offline-message-email">Email</span>
+                            <span
+                                class="form-required">*</span></label>
+                        <input type="text" class="form-control"
+                            id="offline-message-email"
+                            placeholder="Enter your email">
+                        <!--Error message-->
+                        <div class="invalid-feedback required-field"
+                            id="invalid-feedback-email">This field is required
+                        </div>
+                        <div class="invalid-feedback"
+                            id="invalid-feedback-email-invalid">Please enter a
+                            valid email</div>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="offline-message-message"><span
+                                id="label-offline-message-message">Message</span>
+                            <span
+                                class="form-required">*</span></label>
+                        <textarea class="form-control" rows="4"
+                            id="offline-message-message"
+                            placeholder="Enter your message"></textarea>
+                        <!--Error message-->
+                        <div class="invalid-feedback required-field"
+                            id="invalid-feedback-message">This field is required
+                        </div>
+
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <label id="termsshow">
+                            <input type="checkbox" id="terms-checkbox">
+                            <a href
+                                target="_blank" id="terms-checkbox-link">Terms &
+                                Conditions</a>
+                        </label>
+                        <label id="policyshow">
+                            <input type="checkbox" id="privacy-checkbox">
+                            <a href
+                                target="_blank"
+                                id="privacy-checkbox-link">Privacy Policy</a>
+                        </label>
+
+                        <!-- Error message -->
+                        <div class="invalid-feedback required-field"
+                            id="invalid-feedback-checkboxes">
+                            Please agree to both Terms & Conditions and Privacy
+                            Policy
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary" loadingText="Submitting..."
+                        id="offline-message-submit"
+                        type="button">Submit</button>
+                    <div class="message-feedback message-feedback-success"
+                        id="message-success">
+                        <svg width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M9 11L11 13L15.5 8.5M11.9932 5.13581C9.9938 2.7984 6.65975 2.16964 4.15469 4.31001C1.64964 6.45038 1.29697 10.029 3.2642 12.5604C4.75009 14.4724 8.97129 18.311 10.948 20.0749C11.3114 20.3991 11.4931 20.5613 11.7058 20.6251C11.8905 20.6805 12.0958 20.6805 12.2805 20.6251C12.4932 20.5613 12.6749 20.3991 13.0383 20.0749C15.015 18.311 19.2362 14.4724 20.7221 12.5604C22.6893 10.029 22.3797 6.42787 19.8316 4.31001C17.2835 2.19216 13.9925 2.7984 11.9932 5.13581Z"
+                                stroke="currentcolor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                            </path>
+                        </svg>
+
+                        <span id="message-success-text">Your message sent
+                            successfully!</span>
+
+                        <button class="btn btn-primary"
+                            id="offline-message-success-close"
+                            type="button">Send Again</button>
+                    </div>
+                    <div class="message-feedback message-feedback-error"
+                        id="message-error">
+                        <svg width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M16 16C16 16 14.5 14 12 14C9.5 14 8 16 8 16M17 9.24C16.605 9.725 16.065 10 15.5 10C14.935 10 14.41 9.725 14 9.24M10 9.24C9.605 9.725 9.065 10 8.5 10C7.935 10 7.41 9.725 7 9.24M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z"
+                                stroke="currentcolor" stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+
+                        <span id="message-error-text">Oops! Something went
+                            wrong</span>
+
+                        <button class="btn btn-primary"
+                            id="offline-message-error-close" type="button">Try
+                            Again</button>
+                    </div>
+                </div>
+                <div class="quick-btn hide-sample-messages"
+                    id="quick-btn"></div>
+                <div class="chat-options">
+                    <div class="chat-sample-messages hide-sample-messages"
+                        id="chat-sample-messages">
+                        <button type="button"
+                            class="chat-with-human switch-chat-btn"
+                            style="display: none;" id="chat-with-human">
+                            <svg width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M20 21C20 19.6044 20 18.9067 19.8278 18.3389C19.44 17.0605 18.4395 16.06 17.1611 15.6722C16.5933 15.5 15.8956 15.5 14.5 15.5H9.5C8.10444 15.5 7.40665 15.5 6.83886 15.6722C5.56045 16.06 4.56004 17.0605 4.17224 18.3389C4 18.9067 4 19.6044 4 21M16.5 7.5C16.5 9.98528 14.4853 12 12 12C9.51472 12 7.5 9.98528 7.5 7.5C7.5 5.01472 9.51472 3 12 3C14.4853 3 16.5 5.01472 16.5 7.5Z"
+                                    stroke="currentcolor" stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+
+                            Chat with the team</button>
+                        <button type="button"
+                            class="chat-with-bot switch-chat-btn"
+                            style="display: none;" id="chat-with-bot">
+                            <svg width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M8.5 12.5C8.5 12.5 9.8125 14 12 14C14.1875 14 15.5 12.5 15.5 12.5M14.75 7.5H14.76M9.25 7.5H9.26M7 18V20.3355C7 20.8684 7 21.1348 7.10923 21.2716C7.20422 21.3906 7.34827 21.4599 7.50054 21.4597C7.67563 21.4595 7.88367 21.2931 8.29976 20.9602L10.6852 19.0518C11.1725 18.662 11.4162 18.4671 11.6875 18.3285C11.9282 18.2055 12.1844 18.1156 12.4492 18.0613C12.7477 18 13.0597 18 13.6837 18H16.2C17.8802 18 18.7202 18 19.362 17.673C19.9265 17.3854 20.3854 16.9265 20.673 16.362C21 15.7202 21 14.8802 21 13.2V7.8C21 6.11984 21 5.27976 20.673 4.63803C20.3854 4.07354 19.9265 3.6146 19.362 3.32698C18.7202 3 17.8802 3 16.2 3H7.8C6.11984 3 5.27976 3 4.63803 3.32698C4.07354 3.6146 3.6146 4.07354 3.32698 4.63803C3 5.27976 3 6.11984 3 7.8V14C3 14.93 3 15.395 3.10222 15.7765C3.37962 16.8117 4.18827 17.6204 5.22354 17.8978C5.60504 18 6.07003 18 7 18ZM15.25 7.5C15.25 7.77614 15.0261 8 14.75 8C14.4739 8 14.25 7.77614 14.25 7.5C14.25 7.22386 14.4739 7 14.75 7C15.0261 7 15.25 7.22386 15.25 7.5ZM9.75 7.5C9.75 7.77614 9.52614 8 9.25 8C8.97386 8 8.75 7.77614 8.75 7.5C8.75 7.22386 8.97386 7 9.25 7C9.52614 7 9.75 7.22386 9.75 7.5Z"
+                                    stroke="currentcolor" stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            Chat with bot</button>
+                    </div>
+                </div>
+
+                <form id="chat-form" class="chat-input-wrap">
+                    <textarea rows='1' class="chat-input textarea js-auto-size"
+                        id="chat-input"
+                        placeholder="Type your message"></textarea>
+                    <button class="chat-submit-btn" type="submit"><svg
+                            width="16" height="16" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M4.394 14.7L13.75 9.3c1-.577 1-2.02 0-2.598L4.394 1.299a1.5 1.5 0 00-2.25 1.3v3.438l4.059 1.088c.494.132.494.833 0 .966l-4.06 1.087v4.224a1.5 1.5 0 002.25 1.299z"
+                                fill="currentColor"></path>
+                        </svg></button>
+                </form>
+                <a id="powered-by" class="powered-by"
+                    href="https://ultimabot.ai/"
+                    target="_blank">powered by&nbsp;<b>ultimabot.ai</b>
+                </a>
+            </div>
+        </div>
+
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/autosize.js/3.0.20/autosize.min.js"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.2.12/marked.min.js"></script>
+        <link rel="stylesheet"
+            href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+        <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"
+            integrity="sha384-mZLF4UVrpi/QTWPA7BjNPEnkIfRFn4ZEO3Qt/HFklTJBj/gBOV8G3HcKn4NfQblz"
+            crossorigin="anonymous"></script>
+
+        <script type="module">
+        const STREAM_RESPONSE = true;
+        import categoriesData from './vakmangids_cat.json';
+
+        // message format
+
+        let origin = '';
+        let container = '';
+        let socketData;
+
+        let showReadMore = true;
+        let readMoreText = 'Read More:';
+
+        let isFirstMessage = true;
+
+        let collectEmail = false;
+        let enableHumanChat = false;
+        let isManualChat = false;
+        let collectEmailText = 'Read More:';
+        let CBType = '';
+        let isSubCategoryExist = false;
+        let isCategoryExist = false;
+        let clientIp = '';
+        let avatarLinkUrl = '';
+
+        const chatWithHumanButton = document.getElementById('chat-with-human');
+        const chatWithBotButton = document.getElementById('chat-with-bot');
+        const videohidebtn = document.getElementById('video-cls-btn');
+
+
+        const defaultWelcomeMessage = 'Hello! How can I assist you today?';
+        const submitBtnSubmittingText = 'Submitting...';
+        let atWelcomeMessage = '';
+
+        let sessionId = '';
+        let messageExists = false;
+        const params = new URLSearchParams(window.location.search);
+
+        const site = params.get("site");
+
+        const queryParams = new URLSearchParams(window.location.search);
+        const at = queryParams.get("at");
+        const fullUrl = queryParams.get("currentUrl") || window.location.href;
+
+        console.log("Received 'at' from query params:", at,
+        "site" ,site,
+        "window",
+        "fullUrl",fullUrl,
+       
+        );
+       
+        if (at !== null && at !== undefined && at !== 'null' && at !== '') {
+            try {
+                // JWT consists of three parts: header, payload, signature
+                const [header, payload, signature] = at.split('.');
+                // Decode payload (Base64URL to JSON)
+                const decodedPayload = JSON.parse(atob(payload.replace(/-/g, '+').replace(/_/g, '/')));
+                console.log("Decoded Payload:", decodedPayload);
+                atWelcomeMessage = decodedPayload.greetMessage;
+            } catch (error) {
+                console.error("Invalid JWT token:", error);
+            }
+        }
+
+        function handleCustomBtn() {
+        const chatMessages = document.getElementById('chat-messages');
+        const sampleMessages = document.getElementById('chat-sample-messages');
+        const offlineMessage = document.getElementById('offline-message');
+        const videoPlayer = document.getElementById('video-player');
+
+                videoPlayer.style.display = 'none';
+                videohidebtn.style.display = 'none';
+                chatMessages.style.display = 'none';
+                offlineMessage.style.display = 'block';
+                // Stop or pause video if it's playing
+                const video = videoPlayer.querySelector('video');
+                const iframe = videoPlayer.querySelector('iframe');
+
+                if (video) {
+                    video.pause();
+                    video.currentTime = 0; // optional — resets video
+                }
+
+                // For embedded YouTube or iframe videos
+                if (iframe) {
+                    iframe.src = iframe.src; // reloads iframe — effectively stops playback
+                }
+        }
+
+        function handleMessageExists() {
+            document.getElementById('chat-new-continue').remove();
+            document.getElementById('chat-form').classList.remove('disabled');
+            document.getElementById('chat-input').removeAttribute('disabled');
+            document.getElementById('chat-input').focus();
+            document.getElementById('chat-input').addEventListener('change', () => {
+                const chatMessages = document.getElementById('chat-messages');
+            const videoPlayer = document.getElementById('video-player');
+            if (videoPlayer) videoPlayer.style.display = 'none';
+            // Stop or pause video if it's playing
+            const video = videoPlayer.querySelector('video');
+            const iframe = videoPlayer.querySelector('iframe');
+
+            if (video) {
+                video.pause();
+                video.currentTime = 0; // optional — resets video
+            }
+
+            // For embedded YouTube or iframe videos
+            if (iframe) {
+                iframe.src = iframe.src; // reloads iframe — effectively stops playback
+            }
+            if (chatMessages) chatMessages.style.display = 'block';
+            });
+            messageExists = false;
+        }
+
+        if(window.localStorage.getItem('sessionId')) {
+            sessionId = window.localStorage.getItem('sessionId');
+        }
+
+        function getDomainFromUrl(url) {
+            if (!url) return '';
+            const matches = url.match(/^https?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
+            const domain = matches && matches[1]; // domain will be null if no match is found
+            return (domain || '').replace('www.', '');
+        }
+
+        const urlParams = new URLSearchParams(window.location.search);
+
+        let knowledgebaseId;
+        const baseURL = urlParams.get('baseUrl') || process.env.WW_BASE_URL || 'http://localhost:3000';
+        const chatWidget = document.querySelector('.chat-wrap');//chatWidgetData
+
+        console.log("embed" ,urlParams.get('embed'));
+        
+        if (urlParams.get('embed') === 'true') {
+            chatWidget.classList.add('widget-open');
+        }
+        if (urlParams.get('hide-chat-actions') === 'true') {
+            // console.log("debug 2 " ,urlParams.get('hide-chat-actions'));
+            chatWidget.classList.add('hide-chat-actions');
+        }
+
+        /**
+         * Iframe communications
+         */
+        // Msg listener
+        window.onmessage = function(event) {
+            if (event.data.messageType === 'ultimachatbot:recieve_meta_data') {
+                origin = event.data.url;
+                container = event.data.container;
+
+                if (container) {
+                    const $chatLauncher = document.getElementById('chat-launcher');
+                    const $chatActions = document.getElementById('chat-actions');
+                    $chatLauncher.parentNode.removeChild($chatLauncher);
+                    $chatActions.parentNode.removeChild($chatActions);
+                    
+                    // notifyParentWidgetExpand();
+                    setTimeout(() => {
+                        document.getElementById('chat-input').focus();
+                    }, 320);
+                }
+            } else if (event.data.messageType === 'ultimachatbot:recieve_session_id') {
+                sessionId = event.data.sessionId;
+            } else if (event.data.messageType === 'ultimachatbot:recieve_is_manual_chat') {
+                isManualChat = event.data.isManualChat;
+            } else if (event.data.messageType === 'ultimachatbot:expandWidget') {
+                expandWidget();
+            }
+        }
+
+        requestSessionId();
+        requestIsManualChat();
+        setTimeout(() => {
+            getWidgetMessages()
+        }, 50);
+
+        const defaultWidgetData = {
+            backgroundColor: "#000",
+            fontColor: "#FFF",
+            borderRadius: "12px",
+            placement: "right"
+        }
+
+        const validateEmail = (email) => {
+            return String(email)
+                .toLowerCase()
+                .match(
+                    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                );
+        };
+
+        const uuidv4 = () => {
+            return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
+                (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+            );
+        }
+
+        marked.setOptions({
+            highlight: function(code, lang) {
+                const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+                const hl = hljs.highlight(code, { language: 'javascript' }).value;
+                return hl;
+            },
+            langPrefix: 'hljs language-', // highlight.js css expects a top-level 'hljs' class.
+        });
+
+        function escapeRegExp(string) {
+            return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
+        }
+        function replaceAll(str, find, replace) {
+            return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
+        }
+
+        let cwd = null;
+        function resetChatHistory() {
+           
+            const chatMessages = document.getElementById('chat-messages');
+            chatMessages.innerHTML = '';
+            sessionId = '';
+            isManualChat = false;
+            if (enableHumanChat) {
+                chatWithHumanButton.style.display = 'flex';
+                chatWithBotButton.style.display = 'none';
+            }
+
+            if (cwd.welcomeMessage) {
+                welcomeMessages.push(cwd.welcomeMessage);
+            } else {
+                welcomeMessages = cwd.welcomeMessages || [defaultWelcomeMessage];
+            }
+            const welcomeMessagesHTML = welcomeMessages.map(msg => {
+                return `<div class="chat-message chatbot" id="bottext"> <div class="avatar">
+                                <img src=${avatarLinkUrl ||"https://app.ultimabot.ai/icons/avatar.jpg"} alt="Chatbot Avatar ee" />
+                            </div><div class="chat-message-text">${msg}</div></div>`
+            }).join('');
+
+            chatMessages.insertAdjacentHTML("afterbegin", welcomeMessagesHTML);
+            
+            notifyClearHistory();
+            getWidgetData();
+        }
+
+
+        autosize(document.querySelector('#chat-input'));
+
+        // toggle class on chat widget on chat-launcher-btn
+        const chatLauncherBtn = document.querySelector('.chat-launcher-btn');
+        const chatCloseBtn = document.querySelector('#chat-close-btn');
+        const chatMaximizeBtn = document.querySelector('#chat-maximize-btn');
+        const chatMinimizeBtn = document.querySelector('#chat-minimize-btn');
+        const chatClearHistoryBtn = document.querySelector('#chat-clear-session-btn');
+        function isMobile() {
+            const userAgent = navigator.userAgent.toLowerCase();
+            return /iphone|ipod|android|blackberry|iemobile|opera mini/.test(userAgent);
+        }
+        window.onload = function() {
+            if (!isMobile()) {
+                //  console.log("debuger 6 " , isMobile());
+                expandWidget(!isMobile());
+            }
+            fetch('https://api.ipify.org?format=json')
+            .then((response) => response.json())
+            .then((data) => {
+                clientIp = data.ip;
+            })
+            .catch((error) => console.error('Error fetching ip:', error));
+        };
+        chatLauncherBtn.addEventListener('click', () => {
+            expandWidget();
+        });
+        chatCloseBtn.addEventListener('click', () => {
+                sessionStorage.setItem("chatWidgetState", "closed");
+
+            chatWidget.classList.remove('widget-open');
+            chatWidget.classList.remove('widget-maximize');
+            notifyParentWidgetCollapse();
+
+            const video = videoPlayer.querySelector('video');
+            const iframe = videoPlayer.querySelector('iframe');
+
+            if (video) {
+                video.pause();
+                video.currentTime = 0; // optional — resets video
+            }
+
+            // For embedded YouTube or iframe videos
+            if (iframe) {
+                iframe.src = iframe.src; // reloads iframe — effectively stops playback
+            }
+
+        });
+        chatMaximizeBtn.addEventListener('click', () => {
+            chatWidget.classList.toggle('widget-maximize');
+            notifyParentWidgetMaximize();
+        });
+        chatMinimizeBtn.addEventListener('click', () => {
+            chatWidget.classList.toggle('widget-maximize');
+            notifyParentWidgetMinimize();
+            const chatMessages = document.getElementById('chat-messages');
+            const videoPlayer = document.getElementById('video-player');
+            videoPlayer.style.display = 'none';
+            // Stop or pause video if it's playing
+            const video = videoPlayer.querySelector('video');
+            const iframe = videoPlayer.querySelector('iframe');
+
+            if (video) {
+                video.pause();
+                video.currentTime = 0; // optional — resets video
+            }
+
+            // For embedded YouTube or iframe videos
+            if (iframe) {
+                iframe.src = iframe.src; // reloads iframe — effectively stops playback
+            }
+
+        });
+        chatClearHistoryBtn.addEventListener('click', resetChatHistory);
+
+        function expandWidget(isShow) {
+            const iframe = document.getElementById("ultimachatbot-widget");
+            //  console.log("debuger 4" ,iframe);
+            // //  i need check condition here and 
+            if(!isShow){
+                if(iframe){
+                    iframe.classList.add("wb-expand");
+                }
+                chatWidget.classList.add('widget-open');
+                sessionStorage.setItem("chatWidgetState", "open");
+
+            }
+            notifyParentWidgetExpand();
+
+            setTimeout(() => {
+                const chatMessages = document.getElementById('chat-messages');
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                // document.getElementById('chat-input').focus();
+            }, 320);
+        }
+
+
+        async function getWidgetData() {
+            let url;
+            const kbId = urlParams.get('kbId');
+
+            if (kbId) {
+                knowledgebaseId = kbId;
+                url = `${baseURL}/knowledgebase/${knowledgebaseId}/chat_widget_data`;
+            } else {
+                const domain = getDomainFromUrl(window.location.href);
+                url = `${baseURL}/knowledgebase/chat_widget_data_for_domain?domain=${domain}`;
+
+                // chatWidget.classList.add('hide-chat-actions', 'widget-open');
+            }
+            const response = await fetch(
+                url,
+                {
+                    method: 'GET', // *GET, POST, PUT, DELETE, etc.
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+                    // body data type must match "Content-Type" header
+                }
+            );
+
+            if (response.status === 200) {
+                const releaseBody = await response.json();
+                const chatWidgeData = releaseBody.chatWidgeData || defaultWidgetData;
+                return {
+                    ...releaseBody,
+                    chatWidgeData: chatWidgeData
+                }
+            } else {
+                
+            }
+            //return response;
+        }
+
+
+        async function getWidgetMessages() {
+            // console.log(CBType, " <= chatBotType");
+            if (!sessionId || CBType === "vakmangids") {
+                return;
+            }
+            const url = `${baseURL}/bot/session/${sessionId}/messages`;
+            try {
+                const response = await fetch(url, {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    referrerPolicy: 'no-referrer',
+                });
+                if (response.status === 200) {
+                    const { messages: _messages } = await response.json();
+                    // const messages = _messages.map(({ role, content, id }) => ({
+                    //     role: role === 'admin' || role === 'bot' ? 'assistant' : role,
+                    //     content,
+                    //     id,
+                    // }));
+                    const messages = _messages.map(({ q, a }) => ({
+                        q,
+                        a,
+                    }));
+                    
+                    messageExists = true;
+
+                    if (messages.length > 0) {
+                        isFirstMessage = false;
+                    }
+                    if (!isFirstMessage) {
+                        let msgHTML = messages.map(msg => {
+                        
+                        // let msgContent = msg.content.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/<br\/>/g, '\n');
+                        // const markdownRes = marked.parse(msgContent);
+
+                        // if (msg.role === 'divider') {
+                        //     return createChatWithDivider(msgContent);
+                        // }
+
+                        // const type = msg.role === 'user' ? 'user' : 'chatbot';
+
+                        let msgAns = msg.a.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/<br\/>/g, '\n');
+                        const markdownRes = marked.parse(msgAns);
+                        return `<div class="chat-message sdsd user"><div class="chat-message-text">${msg.q}</div></div><div class="chat-message chatbot">
+                            <div class="avatar">
+                                <img src=${avatarLinkUrl||"https://app.ultimabot.ai/icons/avatar.jpg"} alt="Chatbot Avatar aa" />
+                                </div>
+                                <div class="chat-message-text">${markdownRes}</div></div>`;
+                            }).join('');
+                            
+                    const knowledgebaseId = urlParams.get('kbId');
+                    if(messageExists) {
+                        msgHTML += `<div id="chat-new-continue" style="margin-top: 30px;">
+                                <p><strong>${knowledgebaseId === '6756b1adbbb7a11ce9a309e6' ? 'Wilt u het vorige gesprek voortzetten of een nieuwe chat starten?' : 'Would you like to continue the previous conversation or start a new chat?'}</strong></p>
+                                <p>
+                                    <button class="chat-sample-message chat-continue-btn" id="chat-continue-btn">${knowledgebaseId === '6756b1adbbb7a11ce9a309e6' ? 'Ga door met laatste chat' : 'Continue Last Chat'}</button>
+                                    <button class="chat-sample-message chat-new-btn" id="chat-new-btn">${knowledgebaseId === '6756b1adbbb7a11ce9a309e6' ? 'Nieuwe chat starten' : 'Start New Chat'}</button>
+                                </p>
+                            </div>`;
+
+                            document.getElementById('chat-form').classList.add('disabled');
+                            document.getElementById('chat-input').setAttribute('disabled', 'true');
+                    }
+
+                    const chatMessages = document.getElementById('chat-messages');
+                    chatMessages.insertAdjacentHTML("beforeend", msgHTML);
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                    document.getElementById('chat-continue-btn').addEventListener('click', handleMessageExists);
+                    document.getElementById('chat-new-btn').addEventListener('click', function() {
+                        localStorage.clear();
+                        resetChatHistory();
+                        document.getElementById('chat-form').classList.remove('disabled');
+                        document.getElementById('chat-input').removeAttribute('disabled');
+                    });
+                    }
+                    
+                } else if (response.status === 404) {
+                    resetChatHistory()
+                } else {
+                    console.error('Failed to fetch messages: Status', response.status);
+                }
+            } catch (error) {
+                console.error('Error fetching messages:', error);
+            }
+        }
+
+        // async function initSocketConnection(sessionId) {
+        //     var socket = io(`${baseURL}`, { transports: ["websocket"], query: { id: sessionId, knowledgeBaseId: knowledgebaseId } });
+        //     socket.on('connect', function() {
+        
+        //     });
+        //     socket.on('user_chat', function(msgData) {
+        //         // append to UI 
+        //         const chatMessage = createChatMessage(msgData.msg, true);
+        //         insertMessageIntoUI(chatMessage);
+        //     });
+        //     return socket;
+        // }
+
+        (async () => {
+
+            const data = await getWidgetData();
+            if (!knowledgebaseId) {
+                knowledgebaseId = data.id;
+            }
+            cwd = data.chatWidgeData;
+            const chatWidgetData = data.chatWidgeData;
+            const chatBotType = data.chatbotType;
+            CBType = data.chatbotType;
+            // console.log("chatWidgetData" ,chatWidgetData);
+            const chatWidget = document.querySelector('.chat-wrap');//chatWidgetData
+            
+            if(chatWidgetData?.excludedUrls){
+                const ultimachatbotchatWidget = document.querySelector('ultimachatbot-widget');//chatWidgetData
+                chatWidgetData?.excludedUrls?.find(excludedUrl => {
+                     console.log("excludedUrl", excludedUrl ,ultimachatbotchatWidget,"fullUrl", fullUrl);
+                     
+                     if (fullUrl == excludedUrl) {
+                        console.log("excludedUrl 33", excludedUrl ,fullUrl == excludedUrl);
+                        chatWidget.style.display = 'none';
+                        if(ultimachatbotchatWidget) {
+                        ultimachatbotchatWidget.style.display = 'none';
+                        }
+                        return true;
+                    }
+                })
+            }
+
+            //  i need check condition here and 
+            if(chatWidgetData){
+            const savedState = sessionStorage.getItem("chatWidgetState");
+                    if(savedState === "open") {
+                        expandWidget();
+                    } else  {
+                        if(!(urlParams.get('embed') === 'true')){
+                            chatWidget.classList.remove('widget-open');
+                            chatWidget.classList.remove('widget-maximize');
+                            notifyParentWidgetCollapse();
+                        }
+                    }
+
+                    if (chatWidget) {
+                    }
+                const chatLauncherBtn = document.querySelector('.chat-launcher');
+                
+                
+                if (!chatLauncherBtn) return;
+                  
+                const showLauncher = () => {
+                    chatLauncherBtn.classList.add('show');
+                    // notifyParentWidgetExpand();
+                };
+                
+                const delay = chatWidgetData?.popupDelayMs;
+                // console.log("debuger 8" ,delay);
+
+                if (delay && Number(delay) > 0) {
+                    // show after delay
+                    setTimeout(showLauncher, Number(delay));
+                } else {
+                    // show immediately
+                    showLauncher();
+                }
+            }
+            
+
+
+            
+
+            showReadMore = chatWidgetData.showReadMore;
+            collectEmail = chatWidgetData.collectEmail;
+            enableHumanChat = chatWidgetData.enableHumanChat
+            if(chatWidgetData){
+                if(chatWidgetData.avatarFieldValue) {
+                    avatarLinkUrl = chatWidgetData.avatarFieldValue
+                }
+            }
+            if (enableHumanChat) {
+                chatWithHumanButton.style.display = isManualChat ? 'none' : 'flex';
+                chatWithBotButton.style.display = isManualChat ? 'flex' : 'none';
+            } else {
+                isManualChat = false;
+                updateIsManualChat(false)
+            }
+
+            requestMetaData();
+            // socketData = await initSocketConnection(sessionId)
+
+            const heading = document.getElementById('chat-heading');
+            const description = document.getElementById('chat-description');
+            const offlineMsgHeading = document.getElementById('offline-message-heading');
+            const offlineMsgDescription = document.getElementById('offline-message-description');
+            const branding = document.getElementById('powered-by');
+            const buttonElement = document.getElementById("chat-launcher-btn");
+            const chatInputElement = document.getElementById("chat-input");
+            const offlineMsgNameLabel = document.getElementById("label-offline-message-name");
+            const offlineMsgEmailLabel = document.getElementById("label-offline-message-email");
+            const offlineMsgMessageLabel = document.getElementById("label-offline-message-message");
+            const offlineMsgNameInput = document.getElementById("offline-message-name");
+            const offlineMsgEmailInput = document.getElementById("offline-message-email");
+            const offlineMsgMessageInput = document.getElementById("offline-message-message");
+
+            const requiredFieldErrorMsg = document.querySelectorAll('.required-field');
+            const invalidEmailErrorMsg = document.getElementById('invalid-feedback-email-invalid');
+            const formSubmitSuccessMsg = document.getElementById("message-success-text");
+            const formSubmitErrorMsg = document.getElementById("message-error-text");
+            const formSendAgainBtn = document.getElementById("offline-message-success-close");
+            const formTryAgainBtn = document.getElementById("offline-message-error-close");
+
+
+            const termsCheckbox = document.getElementById('terms-checkbox');
+            const privacyCheckbox = document.getElementById('privacy-checkbox');
+            const termsShow = document.getElementById('termsshow');
+            const policyshow = document.getElementById('policyshow');
+
+
+            // Get the anchor elements inside their labels
+            const termsAnchor = document.querySelector('label[for="terms-checkbox"] a') || document.querySelector('#terms-checkbox + a');
+            const privacyAnchor = document.querySelector('label[for="privacy-checkbox"] a') || document.querySelector('#privacy-checkbox + a');
+
+
+            const defaultLauncherIcon = `<svg 
+                focusable="false" 
+                stroke="currentColor" 
+                fill="none" 
+                stroke-width="2" 
+                viewBox="0 0 24 24"
+                stroke-linecap="round" 
+                stroke-linejoin="round" 
+                height="1em" 
+                width="1em" 
+                xmlns="http://www.w3.org/2000/svg"
+                style=" width: 38px; height: 38px;">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path
+                    d="M5.821 4.91c3.898 -2.765 9.469 -2.539 13.073 .536c3.667 3.127 4.168 8.238 1.152 11.897c-2.842 3.447 -7.965 4.583 -12.231 2.805l-.232 -.101l-4.375 .931l-.075 .013l-.11 .009l-.113 -.004l-.044 -.005l-.11 -.02l-.105 -.034l-.1 -.044l-.076 -.042l-.108 -.077l-.081 -.074l-.073 -.083l-.053 -.075l-.065 -.115l-.042 -.106l-.031 -.113l-.013 -.075l-.009 -.11l.004 -.113l.005 -.044l.02 -.11l.022 -.072l1.15 -3.451l-.022 -.036c-2.21 -3.747 -1.209 -8.392 2.411 -11.118l.23 -.168z"
+                    stroke-width="0" fill="currentColor"></path>
+            </svg>`
+
+            const iconContainer = document.createElement("div");
+            iconContainer.innerHTML = data?.launcherIcon?.svgElement || defaultLauncherIcon;
+            buttonElement.appendChild(iconContainer);
+
+            if (data.customKey || chatWidgetData.hideBranding || data.whitelabelling?.removeBranding) {
+                branding.style.display = 'none';
+            }
+
+            if (chatWidgetData.offlineMsgTabHeader) {
+                offlineMsgTab.innerText = chatWidgetData.offlineMsgTabHeader;
+            }else if (chatBotType === 'vakmangids') {
+                offlineMsgTab.innerText = 'Offline bericht';
+            }
+
+            if (chatWidgetData.assistantTabHeader) {
+                aiAssistantTab.innerText = chatWidgetData.assistantTabHeader;
+
+                requestAnimationFrame(() => {
+                    const width = aiAssistantTab.offsetWidth;
+                    tabsActive.style.width = `${width - 5}px`;
+                });
+            }else if (chatBotType === 'vakmangids') {
+                aiAssistantTab.innerText = 'AI-assistent';
+            }
+
+            if (chatWidgetData.heading) {
+                heading.innerText = chatWidgetData.heading;
+            }else if (chatBotType === 'vakmangids') {
+                heading.innerText = 'Ik ben je AI-assistent';
+            }
+            if (chatWidgetData.description) {
+                description.innerText = chatWidgetData.description;
+            }else if (chatBotType === 'vakmangids') {
+                description.innerText = 'Vraag mij alles. Ik kan hetzelfde beantwoorden als chatGPT, maar met de gegevens van deze website';
+            }
+
+            if (chatWidgetData.chatInputPlaceholderText) {
+                chatInputElement.placeholder = chatWidgetData.chatInputPlaceholderText;
+            }else if (chatBotType === 'vakmangids') {
+                chatInputElement.placeholder = 'Typ uw bericht';
+            }
+
+            let welcomeMessages = [];
+
+            if(atWelcomeMessage !== '') {
+                welcomeMessages.push(atWelcomeMessage);
+            }else if (chatWidgetData.welcomeMessages[0] !== '') {
+                welcomeMessages.push(chatWidgetData.welcomeMessages[0]);
+            } else if (chatBotType === 'vakmangids') {
+                welcomeMessages.push('Hallo! Hoe kan ik u vandaag helpen?');
+            }else {
+                welcomeMessages = [defaultWelcomeMessage];
+            }
+           
+
+            if (chatWidgetData?.avatarFieldValue) {
+                const botDivs = document.querySelectorAll("#bottext");
+                avatarLinkUrl = chatWidgetData?.avatarFieldValue
+
+                botDivs.forEach(div => {
+                    // Create avatar container
+                    const avatarDiv = document.createElement("div");
+                    avatarDiv.classList.add("avatar");
+
+                    // Create image
+                    const img = document.createElement("img");
+                    img.src = chatWidgetData?.avatarFieldValue ||"https://app.ultimabot.ai/icons/avatar.jpg";
+                    img.alt = "Bot Avatar";
+
+                    // Append image to avatar div
+                    avatarDiv.appendChild(img);
+
+                    // Insert avatar before chat-message-text
+                    div.insertBefore(avatarDiv, div.firstChild);
+                });
+                }
+            
+            const welcomeMessagesHTML = welcomeMessages.map(msg => {
+                return `<div class="chat-message chatbot"><div class="avatar">
+        <img src=${chatWidgetData?.avatarFieldValue ? chatWidgetData?.avatarFieldValue :"https://app.ultimabot.ai/icons/avatar.jpg"} alt="Chatbot Avatar bb" />
+      </div><div class="chat-message-text">${msg}</div></div>`
+            }).join('');
+
+            const chatMessages = document.getElementById('chat-messages');
+            chatMessages.insertAdjacentHTML("afterbegin", welcomeMessagesHTML)
+
+            if (chatWidgetData.offlineMessage) {
+                const chatWrap = document.getElementById('chat-wrap');
+                chatWrap.classList.add('has-offline-message');
+            }
+
+            if (chatWidgetData.readMoreText) {
+                readMoreText = chatWidgetData.readMoreText;
+            }
+
+            collectEmailText = chatWidgetData.collectEmailText || collectEmailText;
+
+            if (chatWidgetData.offlineMsgHeading) {
+                offlineMsgHeading.innerText = chatWidgetData.offlineMsgHeading;
+            }else if (chatBotType === 'vakmangids') {
+                offlineMsgHeading.innerText = "Offline bericht";
+            }
+
+            if (chatWidgetData.offlineMsgDescription) {
+                offlineMsgDescription.innerText = chatWidgetData.offlineMsgDescription;
+            }else if (chatBotType === 'vakmangids') {
+                offlineMsgDescription.innerText = "Vul het onderstaande formulier in en wij nemen zo snel mogelijk contact met u op.";
+            }
+
+            if (chatWidgetData.nameFieldLabel) {
+                offlineMsgNameLabel.innerText = chatWidgetData.nameFieldLabel;
+            }else if (chatBotType === 'vakmangids') {
+                offlineMsgNameLabel.innerText = "Naam";
+            }
+
+            if (chatWidgetData.emailFieldLabel) {
+                offlineMsgEmailLabel.innerText = chatWidgetData.emailFieldLabel;
+            }else if (chatBotType === 'vakmangids') {
+                offlineMsgEmailLabel.innerText = "E-mail";
+            }
+
+            if (chatWidgetData.msgFieldLabel) {
+                offlineMsgMessageLabel.innerText = chatWidgetData.msgFieldLabel;
+            }else if (chatBotType === 'vakmangids') {
+                offlineMsgMessageLabel.innerText = "Bericht";
+            }
+
+            if (chatWidgetData.nameFieldPlaceholder) {
+                offlineMsgNameInput.placeholder = chatWidgetData.nameFieldPlaceholder;
+            }else if (chatBotType === 'vakmangids') {
+                offlineMsgNameInput.placeholder = "Voer uw naam in";
+            }
+
+            if (chatWidgetData.emailFieldPlaceholder) {
+                offlineMsgEmailInput.placeholder = chatWidgetData.emailFieldPlaceholder;
+            }else if (chatBotType === 'vakmangids') {
+                offlineMsgEmailInput.placeholder = "Voer uw e-mailadres in";
+            }
+           
+
+            if (chatWidgetData.msgFieldPlaceholder) {
+                offlineMsgMessageInput.placeholder = chatWidgetData.msgFieldPlaceholder;
+            }else if (chatBotType === 'vakmangids') {
+                offlineMsgMessageInput.placeholder = "Voer uw bericht in";
+            }
+
+            if (chatWidgetData.requiredFieldMsg) {
+                requiredFieldErrorMsg.forEach(div => {
+                    div.innerText = chatWidgetData.requiredFieldMsg;
+                });
+            }else if (chatBotType === 'vakmangids') {
+                requiredFieldErrorMsg.forEach(div => {
+                    div.innerText = "Dit veld is verplicht";
+                });
+            }
+
+            if (chatWidgetData.invalidEmailMsg) {
+                invalidEmailErrorMsg.innerText = chatWidgetData.invalidEmailMsg;
+            }else if (chatBotType === 'vakmangids') {
+                invalidEmailErrorMsg.innerText = "Voer een geldig e-mailadres in";
+            }
+
+            if (chatWidgetData.formSubmitBtnLabel) {
+                offlineMessageBtn.innerText = chatWidgetData.formSubmitBtnLabel;
+            }else if (chatBotType === 'vakmangids') {
+                offlineMessageBtn.innerText = "Indienen";
+            }
+
+            formSubmitBtnSubmittingText = chatWidgetData.formSubmitBtnSubmittingText ?? submitBtnSubmittingText;
+
+            if (chatWidgetData.formSubmitSuccessMsg) {
+                formSubmitSuccessMsg.innerText = chatWidgetData.formSubmitSuccessMsg;
+            }else if (chatBotType === 'vakmangids') {
+                formSubmitSuccessMsg.innerText = "Uw bericht is succesvol verzonden!";
+            }
+
+            if (chatWidgetData.formSubmitErrorMsg) {
+                formSubmitErrorMsg.innerText = chatWidgetData.formSubmitErrorMsg;
+            }else if (chatBotType === 'vakmangids') {
+                formSubmitErrorMsg.innerText = "Oeps! Er is iets misgegaan";
+            }
+
+            if (chatWidgetData.formSendAgainBtnLabel) {
+                formSendAgainBtn.innerText = chatWidgetData.formSendAgainBtnLabel;
+            }else if (chatBotType === 'vakmangids') {
+                formSendAgainBtn.innerText = "Opnieuw verzenden";
+            }
+
+            if (chatWidgetData.formTryAgainBtnLabel) {
+                formTryAgainBtn.innerText = chatWidgetData.formTryAgainBtnLabel;
+            }else if (chatBotType === 'vakmangids') {
+                formTryAgainBtn.innerText = "Probeer het opnieuw";
+            }
+
+            var styleSheet = document.createElement('style');
+            styleSheet.type = "text/css";
+
+            // Assume you already have chatbot data
+            const primaryColor = chatWidgetData.backgroundColor || '#6a1b9a'; // fallback color
+
+            // Set checkbox accent color dynamically
+            document.documentElement.style.setProperty('--checkbox-color', primaryColor);
+
+            // Then use CSS variable for accent-color
+            const style = document.createElement('style');
+            style.innerHTML = `
+                input[type="checkbox"] {
+                    accent-color: var(--checkbox-color);
+                }
+            `;
+            document.head.appendChild(style);
+
+            const styles = `
+                .chat-widget { border-radius: ${chatWidgetData.borderRadius}!important;}
+                .chat-header, .chat-loading-dot, .chat-launcher-btn { background-color: ${chatWidgetData.backgroundColor}!important;}
+                .chat-wrap {
+                    opacity: 1 !important;
+                }
+                .chat-launcher-btn {
+                    color: ${chatWidgetData.fontColor}!important;
+                }
+                .chat-launcher {
+                    opacity: 0;
+                    transition: opacity 0.5s ease-in-out;
+                    pointer-events: none;
+                }
+
+                .chat-launcher.show {
+                    opacity: 1!important;
+                    pointer-events: auto;
+                }
+                .chat-header, .chat-tabs button, .btn-primary {color: ${chatWidgetData.fontColor}!important}
+                .tabs-active, .btn-primary {background-color: ${chatWidgetData.backgroundColor}!important}
+                .chat-submit-btn svg, .message-feedback, .lead-done-icon {
+                    color: ${chatWidgetData.backgroundColor}!important
+                }
+                .chat-message.user .chat-message-text {background-color: ${chatWidgetData.backgroundColor}!important; color: ${chatWidgetData.fontColor}!important}
+            `
+            styleSheet.textContent = (chatWidgetData?.customCSS || '') + styles;
+
+
+            // if (chatWidgetData.questionExamples && chatWidgetData.questionExamples.length > 0 || chatWidgetData.enableHumanChat) {
+            //     const sampleMessages = document.getElementById('chat-sample-messages');
+            //     sampleMessages.classList.remove('hide-sample-messages');
+            //     chatWidgetData.questionExamples.forEach((message) => {
+            //         if(!message.label || !message.question) return;
+            //         const sampleMessage = document.createElement('div');
+            //         sampleMessage.classList.add('chat-sample-message');
+            //         sampleMessage.setAttribute('data-message', message.question);
+            //         sampleMessage.innerText = message.label;
+            //         sampleMessages.appendChild(sampleMessage);
+            //     });
+            // }
+
+            // document.getElementById('chat-sample-messages').addEventListener('click', (e) => {
+            //     if (e.target.classList.contains('chat-sample-message')) {
+            //         const message = e.target.getAttribute('data-message') || e.target.innerText;
+            //         addMessageToChat(message);
+            //     }
+            // });
+            if(document.getElementById('quick-btn')){
+                document.getElementById('quick-btn').addEventListener('click', (e) => {
+                    if (e.target.classList.contains('quick-btn-btn')) {
+                        const message = e.target.getAttribute('data-message') || e.target.innerText;
+                        addMessageToChat(message);
+                    }
+                });
+            }
+
+            // console.log("chatWidgetData" ,chatWidgetData);
+            
+
+            if (chatWidgetData?.contentEmail?.length > 0) {
+                const sampleMessages = document.getElementById('chat-sample-messages');
+                sampleMessages.classList.remove('hide-sample-messages');
+                const emailLink = document.createElement('a');
+                emailLink.classList.add('chat-sample-message', 'text-decoration-none');
+                emailLink.setAttribute('href', 'mailto:' + chatWidgetData.contentEmail);
+                emailLink.setAttribute('target', "_blank");
+                emailLink.innerText = chatWidgetData.emailLabel ||'Email';
+                sampleMessages.appendChild(emailLink);
+            }
+            if (chatWidgetData?.contentPhone?.length > 0) {
+                const sampleMessages = document.getElementById('chat-sample-messages');
+                sampleMessages.classList.remove('hide-sample-messages');
+                const PhoneLink = document.createElement('a');
+                PhoneLink.classList.add('chat-sample-message', 'text-decoration-none');
+                PhoneLink.setAttribute('href', "tel:"+chatWidgetData.contentPhone);
+                PhoneLink.setAttribute('target', "_blank");
+                if(data?.id === "6756b1adbbb7a11ce9a309e6") {
+                    PhoneLink.innerText = chatWidgetData.phoneFieldLabel || 'Telefoon';
+                }else{
+                    PhoneLink.innerText = chatWidgetData.phoneFieldLabel || 'Phone';
+                }
+                sampleMessages.appendChild(PhoneLink);
+            }
+            if (chatWidgetData?.contentWhatsapp?.length > 0) {                
+                const sampleMessages = document.getElementById('chat-sample-messages');
+                sampleMessages.classList.remove('hide-sample-messages');
+                const whatsappLink = document.createElement('a');
+                whatsappLink.classList.add('chat-sample-message', 'text-decoration-none');
+                whatsappLink.setAttribute('href', "https://wa.me/"+chatWidgetData.contentWhatsapp);
+                whatsappLink.setAttribute('target', "_blank");
+                if(data?.id === "6756b1adbbb7a11ce9a309e6") {
+                    whatsappLink.innerText = chatWidgetData.whatsappFieldLabel || 'WhatsApp';
+                }else{
+                    whatsappLink.innerText = chatWidgetData.whatsappFieldLabel || 'Whatsapp';
+                }
+                sampleMessages.appendChild(whatsappLink);
+            }
+            if (chatWidgetData.contentVideo?.length > 0) {
+                const videoPlayer = document.getElementById('video-player');
+                const chatMessages = document.getElementById('chat-messages');
+                const sampleMessages = document.getElementById('chat-sample-messages');
+                const offlineMessage = document.getElementById('offline-message');
+
+                const quickBtn = document.getElementById('quick-btn');
+
+                // create video link button
+                const videoLinkBtn = document.createElement('a');
+                videoLinkBtn.classList.add('chat-sample-message');
+                videoLinkBtn.innerText = chatWidgetData.videoFieldLabel || 'Video';
+                sampleMessages.appendChild(videoLinkBtn);
+
+                // attach click event
+                videoLinkBtn.addEventListener('click', function () {
+                    // hide chat messages and show video player
+                    chatMessages.style.display = 'none';
+                    offlineMessage.style.display = 'none';
+                    quickBtn.style.display = 'none';
+                    videoPlayer.style.display = 'block';
+                    videohidebtn.style.display = 'block';
+
+                    document.getElementById('chat-form').classList.remove('disabled');
+                    document.getElementById('chat-input').removeAttribute('disabled');
+                    // document.getElementById('chat-input').focus();
+
+                   
+                    // load video inside video-player div
+                   const videoUrl =chatWidgetData.contentVideo|| "https://www.youtube.com/embed/YkFsf-vaLkI"
+                //    
+                
+
+                    if (videoUrl.includes("youtube.com") || videoUrl.includes("youtu.be")) {
+                    // YouTube
+                    const videoId = videoUrl.match(/(?:youtube\.com.*[?&]v=|youtu\.be\/)([^&#]*)/)[1];
+                    videoPlayer.innerHTML = `
+                        <iframe width="100%" height="315"
+                        src="https://www.youtube.com/embed/${videoId}"
+                        frameborder="0"
+                        allow="autoplay; encrypted-media"
+                        allowfullscreen>
+                        </iframe>
+                    `;
+                    } else if (videoUrl.includes("vimeo.com")) {
+                    // Vimeo
+                    const videoId = videoUrl.match(/vimeo\.com\/(\d+)/)[1];
+                    videoPlayer.innerHTML = `
+                        <iframe width="100%" height="315"
+                        src="https://player.vimeo.com/video/${videoId}"
+                        frameborder="0"
+                        allow="autoplay; encrypted-media"
+                        allowfullscreen>
+                        </iframe>
+                    `;
+                    } else {
+                    // Regular MP4 or other supported file
+                    videoPlayer.innerHTML = `
+                        <video width="100%" height="auto" controls autoplay>
+                        <source src="${videoUrl}" type="video/mp4">
+                        Your browser does not support the video tag.
+                        </video>
+                    `;
+                    }
+                    });
+                }
+
+            if (chatWidgetData?.contentAppointment?.length > 0) {
+                const sampleMessages = document.getElementById('chat-sample-messages');
+                sampleMessages.classList.remove('hide-sample-messages');
+                const appointmentLink = document.createElement('a');
+                appointmentLink.classList.add('chat-sample-message', 'text-decoration-none');
+                appointmentLink.setAttribute('href', chatWidgetData.contentAppointment);
+                appointmentLink.setAttribute('target', "_blank");
+                appointmentLink.innerText = chatWidgetData.appointmentFieldLabel || 'Appointment';
+                sampleMessages.appendChild(appointmentLink);
+            }
+           
+            if (chatWidgetData?.privacypolicyValue &&chatWidgetData?.privacypolicyLabel) {
+                    privacyAnchor.textContent = chatWidgetData.privacypolicyLabel;
+                } else if (chatBotType === 'vakmangids') {
+                    privacyAnchor.textContent = "Ik ga akkoord met het privacybeleid";
+                }
+                
+                // Optional: set value or ID dynamically
+                if (chatWidgetData?.privacypolicyValue &&  chatWidgetData.privacypolicyLabel) {
+                    privacyCheckbox.value = chatWidgetData.privacyPolicyValue;
+                     policyshow.style.display = "block"
+                }
+                if (chatWidgetData?.privacypolicyValue && chatWidgetData?.privacypolicyLabel) {
+                     policyshow.style.display = "block"
+                }
+                if (chatWidgetData?.termsandconditionsValue && chatWidgetData?.termsandconditionsLabel) {
+                    termsShow.style.display = "block"
+                }
+                
+                // --- Terms & Conditions Label ---
+                // privacyAnchor.href = chatWidgetData.privacypolicyValue||"";
+                // termsAnchor.href = chatWidgetData.termsandconditionsValue||"";
+                if (chatWidgetData?.termsandconditionsValue && chatWidgetData?.termsandconditionsLabel) {
+                    termsAnchor.textContent = chatWidgetData.termsandconditionsLabel;
+                    
+                } else if (chatBotType === 'vakmangids') {
+                    termsAnchor.textContent = "Ik ga akkoord met de algemene voorwaarden";
+                }
+                if (chatWidgetData?.termsandconditionsValue && chatWidgetData?.termsandconditionsLabel) {
+                termsAnchor.href = chatWidgetData.termsandconditionsValue||"";
+                }
+                if (chatWidgetData?.privacypolicyValue && chatWidgetData?.privacypolicyLabel) {
+                    privacyAnchor.href = chatWidgetData.privacypolicyValue||"";
+                }
+
+                // Optional: set value or ID dynamically
+                if (chatWidgetData?.termsandconditionsValue&& chatWidgetData?.termsandconditionsLabel) {
+                    termsCheckbox.value = chatWidgetData.termsandconditionsValue;
+                }
+
+         
+            chatWithHumanButton.addEventListener('click', async (e) => {
+                if (!enableHumanChat) return;
+                chatWithHumanButton.style.display = 'none';
+                chatWithBotButton.style.display = 'flex';
+                if (!sessionId) {
+                    sessionId = await createSession({
+                        userAgent: getUserAgent(),
+                        origin: origin,
+                        ip: clientIp
+                    });
+                    notifyNewSession(sessionId);
+                }
+                await initManualChat(sessionId);
+                document.getElementById('chat-input').focus();
+
+            });
+
+            chatWithBotButton.addEventListener('click', async (e) => {
+                chatWithBotButton.style.display = 'none';
+                chatWithHumanButton.style.display = 'flex';
+                if (!sessionId) {
+                    sessionId = await createSession({
+                        userAgent: getUserAgent(),
+                        origin: origin,
+                        ip: clientIp
+                    });
+                    notifyNewSession(sessionId);
+                }
+                await initBotChat(sessionId);
+                document.getElementById('chat-input').focus();
+            });
+
+            const widgetConfig = {}
+
+            if (chatWidgetData.placement === 'left') {
+                const chatLauncher = document.getElementById('chat-launcher');
+                chatLauncher.style.left = '20px';
+                chatLauncher.style.right = 'auto';
+                widgetConfig.position = 'left';
+            }
+            if (chatWidgetData.showAsPopup) {
+                // console.log("clisdfka" ,chatWidgetData.popupDelay ,chatWidgetData.showAsPopup ,chatWidgetData.welcomeMessages );
+                
+                widgetConfig.showAsPopup = true;
+                widgetConfig.popupDelay =Number(chatWidgetData?.popupDelayMs) || 500;
+                const isExcluded = chatWidgetData?.excludedUrls?.some(url => fullUrl == url);
+                widgetConfig.welcomeMessages = isExcluded ? []:  chatWidgetData.welcomeMessages;
+            }
+            notifyWidgetConfig(widgetConfig);
+
+            setTimeout(() => {
+                document.head.appendChild(styleSheet);
+            }, 400);
+
+
+        })();
+
+
+        async function createSession(userData) {
+            const response = await fetch(
+                `${baseURL}${'/bot/session?src=widget'}`,
+                {
+                    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+                    body: JSON.stringify({
+                        "knowledgebaseId": knowledgebaseId,
+                        userData: userData
+                    }), // body data type must match "Content-Type" header
+                }
+            );
+
+            if (response.status === 200) {
+                const result = await response.text()
+                // socketData = await initSocketConnection(result);
+                return result;
+            } else {
+                
+            }
+            //return response;
+        }
+
+        async function initManualChat(sessionId) {
+            const url = `${baseURL}/bot/session/${sessionId}/initiate-manual`;
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    referrerPolicy: 'no-referrer',
+                    body: JSON.stringify({}),
+                });
+
+                if (response.status === 200) {
+                    const result = await response.text();
+                    insertMessageIntoUI(createChatWithDivider(`Chat with the Team!`));
+                 
+                    isManualChat = true;
+                    updateIsManualChat(isManualChat)
+
+                } else {
+                    console.error('Error:', response.status);
+                }
+            } catch (error) {
+                console.error('Network error:', error.message);
+            }
+        }
+        async function initBotChat(sessionId) {
+            const url = `${baseURL}/bot/session/${sessionId}/initiate-bot`;
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    referrerPolicy: 'no-referrer',
+                    body: JSON.stringify({}),
+                });
+
+                if (response.status === 200) {
+                    const result = await response.text();
+                    insertMessageIntoUI(createChatWithDivider('Chat with the bot!'));
+                    isManualChat = false;
+                    updateIsManualChat(isManualChat)
+               
+
+                } else {
+                    console.error('Error:', response.status);
+                }
+            } catch (error) {
+                console.error('Network error:', error.message);
+            }
+        }
+
+        async function updateSession(sessionId, userData) {
+            const response = await fetch(
+                `${baseURL}/bot/session/${sessionId}`,
+                {
+                    method: 'PUT', // *GET, POST, PUT, DELETE, etc.
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+                    body: JSON.stringify({
+                        userData: userData
+                    }), // body data type must match "Content-Type" header
+                }
+            );
+            if (response.status === 200) {
+                const result = await response.text()
+                return result;
+            } else {
+                
+            }
+            //return response;
+        }
+
+        async function getAnswer(sessionId, query) {
+            const response = await fetch(
+                `${baseURL}${'/bot/answer'}`,
+                {
+                    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+                    body: JSON.stringify({
+                        "sessionId": sessionId,
+                        "query": query
+                    }), // body data type must match "Content-Type" header
+                }
+            );
+
+            if (response.status === 200) {
+                const result = await response.text()
+                return result;
+            } else {
+                
+            }
+            //return response;
+        }
+
+        function getAnswerStream(sessionId, query, cb, errorCb) {
+            const quickBtnBtn = document.querySelectorAll('.quick-btn-btn');
+                quickBtnBtn.forEach(elem => elem.remove());
+            const url = `${baseURL}${'/bot/answer_stream'}?session=${sessionId}&query=${encodeURIComponent(query)}`;
+            let source = new EventSource(url);
+            let fullResponse = '';
+            source.onmessage = (e) => {
+                const quickReplyParent = document.getElementById('quick-btn');
+                const quickBtnBtn = document.querySelectorAll('.quick-btn-btn');
+                quickBtnBtn.forEach(elem => elem.remove());
+                cb(e.data);
+                if (e.data == "[DONE]") {
+                    source.close();
+                    fetch(`${baseURL}/bot/quick_replies`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ content: fullResponse, sessionId: sessionId }),
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        // console.log(data, "data");
+                        
+                        const lines = data?.response.includes('\n') ? data?.response.split('\n') : data?.response.split(',');
+                        // console.log(lines, "lines");
+                            lines.map(line => {
+                            const match = line.match(/"(.*)"/); // Updated regex to capture text inside quotes
+                            const buttonText = match ? match[1].trim() : line.trim();
+                            if (buttonText && buttonText.length > 0) {
+                                quickReplyParent.classList.remove('hide-sample-messages');
+                               
+                                const quickReplyMsg = document.createElement('button');
+                                quickReplyMsg.classList.add('quick-btn-btn');
+                                quickReplyMsg.setAttribute('data-message', buttonText);
+                                quickReplyMsg.innerText = buttonText;
+                                quickReplyParent.appendChild(quickReplyMsg);
+                            
+                            }
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error sending data to quick replies API:', error);
+                    });
+                }else {
+                    const content = JSON.parse(e.data)?.content || ''; // Extract the content from the event data
+                    fullResponse += content; // Append the content to the full response string
+                }
+            };
+
+            source.onerror = (err) => {
+                source.close();
+                errorCb();
+            };
+        }
+
+        function getUserAgent() {
+            return navigator.userAgent || navigator.vendor || window.opera
+        }
+
+        function createChatWithDivider(chatWithWhom) {
+            return `
+                <div class="divider">
+                    <span class="divider-line"></span>
+                    <span class="divider-text">${chatWithWhom}</span>
+                    <span class="divider-line"></span>
+                </div>
+                `;
+        };
+
+
+        function createChatMessage(msg, isChatbot) {
+            const messageType = isChatbot ? 'chatbot' : 'user';
+            return `<div class="chat-message ${messageType}">
+                <div class="chat-message-text">${msg}</div>
+            </div>
+            `;
+        };
+
+        function insertMessageIntoUI(message) {
+            
+            const chatMessages = document.getElementById('chat-messages');
+            chatMessages.insertAdjacentHTML('beforeend', message);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        };
+
+        async function addMessageToChat(message) {
+
+            const input = document.getElementById('chat-input');
+            message = message || input.value.trim();
+            if (!message) return;
+            const newMessageUser = {
+                role: "user",
+                content: message,
+                id: uuidv4(),
+            };
+
+            const chatMessages = document.getElementById('chat-messages');
+            chatMessages.insertAdjacentHTML("beforeend",
+                `<div class="chat-message user"><div class="chat-message-text">${message}</div></div>`)
+
+            const lastMesage = chatMessages.lastChild.querySelector('.chat-message-text');
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            input.value = '';
+            autosize.update(input);
+
+
+            if (isManualChat) {
+                if(!sessionId) {
+                    sessionId = await createSession({
+                        userAgent: getUserAgent(),
+                        origin: origin,
+                        ip: clientIp
+                    });
+                    notifyNewSession(sessionId);
+                }
+                const msgData = { 'sender': 'user', 'msg': message,  id: uuidv4(), 'sessionId': sessionId }
+                // send message to admin
+                // socketData.emit('user_chat', msgData);
+
+                return;
+            }
+
+            window.handleCategoryChange = function(selectElement) {
+                const value = selectElement.value;
+                addMessageToChat(value).catch((error) => {
+                    console.error("Error in handling select change:", error);
+                });
+                if(selectElement){
+                    // $(selectElement).select2('destroy');
+                    selectElement.style.display = 'none';
+                    let selectBoxes = document.querySelectorAll('.select2');
+                    selectBoxes.forEach(selectBox => {
+                        selectBox.style.display = 'none';
+                    });
+                }
+            };
+            if (STREAM_RESPONSE) {
+                chatMessages.insertAdjacentHTML("beforeend",
+                    `<div class="chat-message chatbot">
+                     <div class="avatar">
+                                <img src=${avatarLinkUrl||"https://app.ultimabot.ai/icons/avatar.jpg"} alt="Chatbot Avatar cc" />
+                            </div>
+                        <div class="chat-message-text"><div class='chat-loading-dot-cont'>
+											<div class="chat-loading-dot"></div>
+											<div class="chat-loading-dot"></div>
+											<div class="chat-loading-dot"></div>
+										</div></div></div>`)
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                const msgHolder = chatMessages.lastChild.querySelector('.chat-message-text');
+                let msg = '';
+                if (!sessionId) {
+                    sessionId = await createSession({
+                        userAgent: getUserAgent(),
+                        origin: origin,
+                        ip: clientIp
+                    });
+                    notifyNewSession(sessionId);
+                    if(CBType !== "vakmangids") {
+                        localStorage.setItem('sessionId', sessionId);
+                    }
+                }
+                const response = getAnswerStream(sessionId, message, (data) => {
+                    if (data !== "[DONE]") {
+                        data = JSON.parse(data);
+                        let content = data.content;
+                        let sources = data.sources;
+                        content = replaceAll(content, '<', '&lt;')
+                        content = replaceAll(content, '>', '&gt;')
+                        content = replaceAll(content, '\n', '<br/>')
+
+                        let sourcesBtns = '';
+                        if (showReadMore && sources && sources.length > 0) {
+
+                            sources = sources.filter((p, i) => {
+                                return i === sources.findIndex(q => q.url === p.url);
+                            });
+                            const knowledgebaseId = urlParams.get('kbId');
+                            sourcesBtns = sources.map((source) => {
+                                const parts = source.url.split('/');
+                                const lastSegment = parts.pop() || parts.pop();
+                                return `<a href="${source.url}" target="_blank" class="chat-source-btn">${lastSegment}</a>`
+                            }).join('');
+                            sourcesBtns = `<div class="chat-sources"><div class="chat-source-read-more">${knowledgebaseId === '6756b1adbbb7a11ce9a309e6' ? 'Lees meer:' : readMoreText}</div>
+                            ${knowledgebaseId === '6756b1adbbb7a11ce9a309e6' ? `<a href="https://www.mdesignstudio.be/portfolio/" target="_blank" class="chat-source-btn">Portfolio</a><a href="https://www.mdesignstudio.be/contact/" target="_blank" class="chat-source-btn">Prijs aanvragen</a>` : sourcesBtns||""}
+                            </div>`
+                        }
+
+                        //data = data.replace(/\n/g, '<br/>')
+                        msg = `${msg}${content}${sourcesBtns||""}`
+                        msgHolder.innerHTML = msg;
+                    } else {
+                        const newMessageAssistant = {
+                            role: "assistant",
+                            content: msg,
+                            id: uuidv4(),
+                        };
+                        msg = replaceAll(msg, '&lt;', '<')
+                        msg = replaceAll(msg, '&gt;', '>')
+                        msg = replaceAll(msg, '<br/>', '\n')
+                        let markdownRes = marked.parse(msg);
+                        // console.log(markdownRes, "markdownRes");
+                        const quickBtn = document.querySelectorAll('.quick-btn');
+
+                        if ((markdownRes.includes('category') && !markdownRes.includes('subcategory') && !isCategoryExist) && CBType === "vakmangids") {
+                            isCategoryExist = true;
+                            markdownRes += `<select id="select_category" style="width:200px;" class="operator" onchange="handleCategoryChange(this);">
+                                <option value="">Select a Page...</option>`;
+
+                            
+                                categoriesData.categories.forEach(category => {
+                                        markdownRes += `<option value="${category.parent_category}">${category.parent_category}</option>`;
+                                    });
+
+                                    // Close the select tag
+                                    markdownRes += `</select>`;
+
+                                    // Set the inner HTML of the msgHolder to the updated markdownRes
+                                    msgHolder.innerHTML = markdownRes;
+                                    
+                                    $("#select_category").select2();
+
+                                    document.getElementById('chat-form').classList.add('disabled');
+                                    document.getElementById('chat-input').setAttribute('disabled', 'true');
+                                    quickBtn.forEach(elem => elem.style.display = 'none');
+                                    } else if(markdownRes.includes('subcategory') && !isSubCategoryExist && CBType === "vakmangids"){
+                                        isSubCategoryExist = true;
+                                        markdownRes += `<select id="select_subcategory" style="width:200px;" class="operator" onchange="handleCategoryChange(this);">
+                                            <option value="">Select a Page...</option>`;
+
+                            
+                                categoriesData.categories.forEach(category => {
+                                    markdownRes += `<optgroup label="${category.parent_category}">`;
+    
+                                    // Add subcategories if they exist
+                                    if (category.subcategories && category.subcategories.length > 0) {
+                                        category.subcategories.forEach(subcategory => {
+                                            markdownRes += `<option value="${subcategory.name}">${subcategory.name}</option>`;
+                                        });
+                                    } else {
+                                        // If no subcategories, add the parent category as an option
+                                        markdownRes += `<option value="${category.parent_category}">${category.parent_category}</option>`;
+                                    }
+                                    });
+
+                                    // Close the select tag
+                                    markdownRes += `</select>`;
+
+                                    // Set the inner HTML of the msgHolder to the updated markdownRes
+                                    msgHolder.innerHTML = markdownRes;
+                                    
+                                    $("#select_subcategory").select2();
+
+                                    document.getElementById('chat-form').classList.add('disabled');
+                                    document.getElementById('chat-input').setAttribute('disabled', 'true');
+                                    quickBtn.forEach(elem => elem.style.display = 'none');
+                        }else {
+                            msgHolder.innerHTML = markdownRes;
+                            document.getElementById('chat-form').classList.remove('disabled');
+                            document.getElementById('chat-input').removeAttribute('disabled');
+                            quickBtn.forEach(elem => elem.style.display = 'block');
+                        }
+
+
+                        // console.log(markdownRes,"markdownResmarkdownRes");
+                        if (collectEmail && isFirstMessage) {
+                            const collectEmailMarkup = `<div class="chat-message chatbot">
+                                    <div
+                                        class="chat-message-text chat-message-form"
+                                        id="chat-message-form-email"
+                                    >
+                                        <div class="form-group">
+                                            <label
+                                                for="lead-email-input"
+                                                >${collectEmailText}</label
+                                            >
+                                            <div id="lead-email-form" class="input-group">
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    id="lead-email-input"
+                                                    placeholder="hi@example.com"
+                                                />
+                                                <button
+                                                    class="chat-submit-btn"
+                                                    id="lead-email-input-submit"
+                                                    type="submit"
+                                                >
+                                                    <svg
+                                                        width="16"
+                                                        height="16"
+                                                        fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                    >
+                                                        <path
+                                                        fill-rule="evenodd"
+                                                        clip-rule="evenodd"
+                                                        d="M4.394 14.7L13.75 9.3c1-.577 1-2.02 0-2.598L4.394 1.299a1.5 1.5 0 00-2.25 1.3v3.438l4.059 1.088c.494.132.494.833 0 .966l-4.06 1.087v4.224a1.5 1.5 0 002.25 1.299z"
+                                                        fill="currentColor"
+                                                        ></path>
+                                                    </svg>
+                                                </button>
+                                                <svg class="lead-done-icon" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="18px" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm-1.999 14.413-3.713-3.705L7.7 11.292l2.299 2.295 5.294-5.294 1.414 1.414-6.706 6.706z"></path></svg>
+                                                <div class='chat-loading-dot-cont'>
+                                                    <div class="chat-loading-dot"></div>
+                                                    <div class="chat-loading-dot"></div>
+                                                    <div class="chat-loading-dot"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>`;
+                            chatMessages.insertAdjacentHTML("beforeend", collectEmailMarkup);
+                            enableEmailCollection();
+                            isFirstMessage = false;
+                        }
+                    }
+
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }, () => {
+                    msgHolder.innerHTML = 'Oops! I am unable to answer right now!';
+                });
+            } else {
+                if (!sessionId) {
+                    sessionId = await createSession({
+                        userAgent: userAgent,
+                        ip: clientIp
+                    });
+                    notifyNewSession(sessionId);
+                }
+                const response = await getAnswer(sessionId, message);
+                const markdownRes = marked.parse(
+                    response.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, "")
+                )
+                chatMessages.insertAdjacentHTML("beforeend",
+                    `<div class="chat-message sasf chatbot"><div class="avatar">
+        <img src=${chatWidgetData?.avatarFieldValue ? chatWidgetData?.avatarFieldValue :"https://app.ultimabot.ai/icons/avatar.jpg"} alt="Chatbot Avatar dd" />
+      </div><div class="chat-message-text">${markdownRes}</div></div>`)
+            }
+        }
+
+        async function saveEmail(email) {
+            const input = document.getElementById('lead-email-input');
+            email = email || input.value.trim();
+            if (!email) return;
+            const $emailFormCont = document.getElementById('chat-message-form-email');
+            $emailFormCont.classList.add('chat-message-form-loading');
+            try {
+                await updateSession(sessionId, {
+                    email: email,
+                    userAgent: getUserAgent(),
+                    origin: origin
+                });
+            } catch (error) {
+                
+            } finally {
+                $emailFormCont.classList.remove('chat-message-form-loading');
+                $emailFormCont.classList.add('chat-message-form-submitted');
+            }
+        }
+
+        function enableEmailCollection() {
+            const leadInputForm = document.getElementById('lead-email-form');
+            const emailInput = document.getElementById('lead-email-input');
+            emailInput.addEventListener('keydown', (e) => {
+                if (e.keyCode === 13 || e.key === "Enter") {
+                    e.preventDefault();
+                    saveEmail();
+                }
+                const $emailFormCont = document.getElementById('chat-message-form-email');
+                $emailFormCont.classList.remove('chat-message-form-submitted');
+            });
+            document.getElementById('lead-email-input-submit').addEventListener('click', (e) => {
+                e.preventDefault();
+                saveEmail();
+            })
+        }
+
+
+        // JavaScript code to handle the chat form submission
+        const form = document.getElementById('chat-form');
+       
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            addMessageToChat();
+            if (videoPlayer) videoPlayer.style.display = 'none';
+            if (chatMessages) chatMessages.style.display = 'block';
+            const video = videoPlayer.querySelector('video');
+                const iframe = videoPlayer.querySelector('iframe');
+
+                if (video) {
+                    video.pause();
+                    video.currentTime = 0; // optional — resets video
+                }
+
+                // For embedded YouTube or iframe videos
+                if (iframe) {
+                    iframe.src = iframe.src; // reloads iframe — effectively stops playback
+                }
+        });
+
+        document.getElementById('chat-input').onkeydown = function(e) {
+            if (e.key === "Enter" && !e.shiftKey && !e.ctrlKey && !e.metaKey) {
+                e.preventDefault();
+                addMessageToChat();
+                if (videoPlayer) videoPlayer.style.display = 'none';
+                if (chatMessages) chatMessages.style.display = 'block';
+                const video = videoPlayer.querySelector('video');
+                const iframe = videoPlayer.querySelector('iframe');
+
+                if (video) {
+                    video.pause();
+                    video.currentTime = 0; // optional — resets video
+                }
+
+                // For embedded YouTube or iframe videos
+                if (iframe) {
+                    iframe.src = iframe.src; // reloads iframe — effectively stops playback
+                }
+            }
+        };
+
+
+        function notifyParentWidgetExpand() {
+            window.top.postMessage('ultimachatbot:widget_expand', '*');
+        }
+        function notifyParentWidgetMaximize() {
+            window.top.postMessage('ultimachatbot:widget_maximize', '*');
+        }
+        function notifyParentWidgetMinimize() {
+            window.top.postMessage('ultimachatbot:widget_minimize', '*');
+        }
+        function notifyClearHistory() {
+            window.top.postMessage('ultimachatbot:widget_clear_history', '*');
+        }
+
+        function notifyParentWidgetCollapse() {
+            window.top.postMessage('ultimachatbot:widget_collapse', '*');
+        }
+
+        function notifyWidgetConfig(config) {
+            window.top.postMessage({
+                messageType: 'ultimachatbot:widget_config',
+                config: config
+            }, '*');
+        }
+
+        function notifyNewSession(sessionId) {
+            window.top.postMessage({
+                messageType: 'ultimachatbot:recieve_new_session_id',
+                sessionId: sessionId || ''
+            }, '*');
+        }
+
+        function requestMetaData() {
+            window.top.postMessage('ultimachatbot:request_meta_data', '*');
+        }
+
+
+        function requestSessionId() {
+            window.top.postMessage('ultimachatbot:request_session_id', '*');
+        }
+
+        function requestIsManualChat() {
+            window.top.postMessage('ultimachatbot:request_is_manual_chat', '*');
+        }
+
+        function updateIsManualChat(isManualChat) {
+            window.top.postMessage({
+                messageType: 'ultimachatbot:update_is_manual_chat',
+                isManualChat: isManualChat || false
+            }, '*');
+        }
+
+
+        const offlineMessageBtn = document.getElementById('offline-message-submit');
+
+        if (offlineMessageBtn) {
+            const $name = document.getElementById('offline-message-name')
+            const $email = document.getElementById('offline-message-email')
+            const $message = document.getElementById('offline-message-message')
+            const $invlidEmail = document.getElementById('invalid-feedback-email');
+            const $invlidEmailInvalid = document.getElementById('invalid-feedback-email-invalid');
+            const $invlidName = document.getElementById('invalid-feedback-name')
+            const $invlidMessage = document.getElementById('invalid-feedback-message')
+            const $termsCheckbox = document.getElementById('terms-checkbox');
+            const $privacyCheckbox = document.getElementById('privacy-checkbox');
+            const $invlidCheckboxes = document.getElementById('invalid-feedback-checkboxes');
+
+
+            $name.addEventListener('blur', (e) => {
+                if (e.target.value) {
+                    $invlidName.classList.remove('feedback-visible')
+                } else {
+                    $invlidName.classList.add('feedback-visible')
+                }
+            })
+            $email.addEventListener('blur', (e) => {
+                if (e.target.value) {
+                    const email = e.target.value;
+                    const isValidEmail = validateEmail(email);
+                    if (!isValidEmail) {
+                        $invlidEmailInvalid.classList.add('feedback-visible');
+                    } else {
+                        $invlidEmailInvalid.classList.remove('feedback-visible');
+                    }
+                    $invlidEmail.classList.remove('feedback-visible');
+                } else {
+                    $invlidEmail.classList.add('feedback-visible');
+                    $invlidEmailInvalid.classList.remove('feedback-visible');
+                }
+            })
+            $message.addEventListener('blur', (e) => {
+                if (e.target.value) {
+                    $invlidMessage.classList.remove('feedback-visible')
+                } else {
+                    $invlidMessage.classList.add('feedback-visible')
+                }
+            })
+
+            
+            const termsAnchor = document.querySelector('label[for="terms-checkbox"] a') || document.querySelector('#terms-checkbox + a');
+            const privacyAnchor = document.querySelector('label[for="privacy-checkbox"] a') || document.querySelector('#privacy-checkbox + a');
+
+           
+            
+            offlineMessageBtn.addEventListener('click', async (e) => {
+                e.preventDefault();
+                const name = $name.value;
+                const email = $email.value;
+                const message = $message.value;
+                
+                const termsHref = termsAnchor?.getAttribute('href');
+                const privacyHref = privacyAnchor?.getAttribute('href');
+                
+                const hasTermsLink =  termsHref?.length > 0;
+                const hasPrivacyLink =  privacyHref?.length > 0;
+
+                const terms = hasTermsLink && !$termsCheckbox.checked;
+                const privacy =hasPrivacyLink && !$privacyCheckbox.checked;
+
+                // console.log("$privacy >>>" ,terms , privacy,termsHref?.length , privacyHref?.length);
+
+                const isValidEmail = validateEmail(email);
+
+                
+                if (isValidEmail && name && message ) {
+                     if (hasTermsLink && !$termsCheckbox.checked ) {
+                            $invlidCheckboxes.classList.add('feedback-visible');
+                            return
+                        } else {
+                            $invlidCheckboxes.classList.remove('feedback-visible');
+                        }
+                        if (hasPrivacyLink && !$privacyCheckbox.checked) {
+                            $invlidCheckboxes.classList.add('feedback-visible');
+                            return
+                        } else {
+                            $invlidCheckboxes.classList.remove('feedback-visible');
+                        }
+
+                    const prevBtnText = offlineMessageBtn.innerHTML;
+                    offlineMessageBtn.innerHTML = formSubmitBtnSubmittingText;
+                    offlineMessageBtn.setAttribute('disabled', true);
+                    if (!sessionId) {
+                        sessionId = await createSession({
+                            userAgent: getUserAgent(),
+                            origin: origin,
+                            ip: clientIp
+                        });
+                        notifyNewSession(sessionId);
+                    }
+
+                    const response = await fetch(
+                        `${baseURL}${'/offline_msg'}`,
+                        {
+                            method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                            mode: 'cors', // no-cors, *cors, same-origin
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                "name": name,
+                                "email": email,
+                                "knowledgebaseId": knowledgebaseId,
+                                "message": message,
+                                "sessionId": sessionId,
+                            }), // body data type must match "Content-Type" header
+                        }
+                    );
+
+                    const $offlineMessage = document.getElementById('offline-message');
+
+                    if (response.status === 201) {
+                        const result = await response.text()
+                        $name.value = '';
+                        $email.value = '';
+                        $message.value = '';
+                        $invlidEmail.classList.remove('feedback-visible');
+                        $invlidName.classList.remove('feedback-visible');
+                        $invlidEmailInvalid.classList.remove('feedback-visible');
+                        $invlidMessage.classList.remove('feedback-visible');
+
+                        $offlineMessage.classList.add('show-success-msg');
+                    } else {
+                        $offlineMessage.classList.add('show-error-msg');
+                    }
+                    offlineMessageBtn.innerHTML = prevBtnText;
+                    offlineMessageBtn.removeAttribute('disabled');
+                } else {
+                    if (email && !isValidEmail) {
+                        $invlidEmail.classList.remove('feedback-visible');
+                        $invlidEmailInvalid.classList.add('feedback-visible');
+                    }
+                    if (!email) {
+                        $invlidEmail.classList.add('feedback-visible');
+                        $invlidEmailInvalid.classList.remove('feedback-visible');
+                    }
+
+                    if (email && isValidEmail) {
+                        $invlidEmail.classList.remove('feedback-visible');
+                        $invlidEmailInvalid.classList.remove('feedback-visible');
+                    }
+
+                    if (!name) {
+                        $invlidName.classList.add('feedback-visible');
+                    } else {
+                        $invlidName.classList.remove('feedback-visible');
+                    }
+                    if (!message) {
+                        $invlidMessage.classList.add('feedback-visible');
+                    } else {
+                        $invlidMessage.classList.remove('feedback-visible');
+                    }
+
+                    if (terms) {
+                        $invlidCheckboxes.classList.add('feedback-visible');
+                    } else {
+                        $invlidCheckboxes.classList.remove('feedback-visible');
+                    }
+                    if (privacy) {
+                        $invlidCheckboxes.classList.add('feedback-visible');
+                    } else {
+                        $invlidCheckboxes.classList.remove('feedback-visible');
+                    }
+                    
+                }
+            });
+
+            const $offlineMessageClose = document.getElementById('offline-message-success-close');
+            const $offlineMessageErrorClose = document.getElementById('offline-message-error-close');
+            const $offlineMessage = document.getElementById('offline-message');
+
+            $offlineMessageClose.addEventListener('click', () => {
+                $offlineMessage.classList.remove('show-success-msg');
+            })
+            $offlineMessageErrorClose.addEventListener('click', () => {
+                $offlineMessage.classList.remove('show-error-msg');
+            })
+
+        }
+
+
+        const aiAssistantTab = document.getElementById('tab-ai-assistant');
+        const offlineMsgTab = document.getElementById('tab-offline-msg');
+                        const quickBtn = document.getElementById('quick-btn');
+
+        const tabsActive = document.getElementById('tabs-active');
+
+        const chatWrap = document.getElementById('chat-wrap');
+        const chatMessages = document.getElementById('chat-messages');
+        const sampleMessages = document.getElementById('chat-sample-messages');
+        const offlineMessage = document.getElementById('offline-message');
+        const videoPlayer = document.getElementById('video-player');
+
+        if (offlineMsgTab) {
+            offlineMsgTab.addEventListener('click', function() {
+                const width = offlineMsgTab.offsetWidth;
+                const left = aiAssistantTab.offsetWidth;
+                tabsActive.style.width = `${width - 5}px`;
+                tabsActive.style.left = `${left + 5}px`;
+                chatWrap.classList.add('chat-wrap-offline');
+                chatWrap.classList.remove('chat-wrap-ai-assistant');
+                videoPlayer.style.display = 'none';
+                chatMessages.style.display = 'none';
+                offlineMessage.style.display = 'block';
+                quickBtn.style.display = 'none';
+                // Stop or pause video if it's playing
+                const video = videoPlayer.querySelector('video');
+                const iframe = videoPlayer.querySelector('iframe');
+
+                if (video) {
+                    video.pause();
+                    video.currentTime = 0; // optional — resets video
+                }
+
+                // For embedded YouTube or iframe videos
+                if (iframe) {
+                    iframe.src = iframe.src; // reloads iframe — effectively stops playback
+                }
+
+            });
+            
+        }
+        if (aiAssistantTab) {
+            aiAssistantTab.addEventListener('click', function() {
+                const width = aiAssistantTab.offsetWidth;
+                tabsActive.style.width = `${width - 5}px`;
+                tabsActive.style.left = `4px`;
+                chatWrap.classList.add('chat-wrap-ai-assistant');
+                chatWrap.classList.remove('chat-wrap-offline');
+                videoPlayer.style.display = 'none';
+                 offlineMessage.style.display = 'none';
+                chatMessages.style.display = 'block';
+
+                // Stop or pause video if it's playing
+                const video = videoPlayer.querySelector('video');
+                const iframe = videoPlayer.querySelector('iframe');
+
+                if (video) {
+                    video.pause();
+                    video.currentTime = 0; // optional — resets video
+                }
+
+                // For embedded YouTube or iframe videos
+                if (iframe) {
+                    iframe.src = iframe.src; // reloads iframe — effectively stops playback
+                }
+            });
+        }
+        
+
+</script>
+        <script>
+    $("#select_category, #select_subcategory").select2();
+</script>
+    </body>
+
+</html>

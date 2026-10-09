@@ -1,0 +1,1112 @@
+{
+  "categories": [
+    {
+      "parent_category": "Tuin- en buitenleven",
+      "subcategories": [
+        {
+          "name": "Tuinonderhoud"
+        },
+        {
+          "name": "Tuinwerken"
+        },
+        {
+          "name": "Tuinaanleg"
+        },
+        {
+          "name": "Tuinontwerp"
+        },
+        {
+          "name": "Prairietuin"
+        },
+        {
+          "name": "Vijver/zwemvijver"
+        },
+        {
+          "name": "Zwembad aanleggen"
+        },
+        {
+          "name": "Zwembad kopen"
+        },
+        {
+          "name": "Zwembadbouw"
+        },
+        {
+          "name": "Zelfbouw met begeleiding"
+        },
+        {
+          "name": "Grasmatten / gazon aanleg"
+        },
+        {
+          "name": "Kunstgras"
+        },
+        {
+          "name": "Afsluitingen"
+        },
+        {
+          "name": "Poorten"
+        },
+        {
+          "name": "Keerwanden"
+        },
+        {
+          "name": "Boomverzorging"
+        },
+        {
+          "name": "Graaf- en grondwerken"
+        },
+        {
+          "name": "Carport"
+        },
+        {
+          "name": "Terrasoverkapping"
+        },
+        {
+          "name": "Tuinhuis"
+        },
+        {
+          "name": "Poolhouse"
+        },
+        {
+          "name": "Terras / oprit aanleggen"
+        },
+        {
+          "name": "Klinkerwerken"
+        },
+        {
+          "name": "Terras / oprit reinigen"
+        },
+        {
+          "name": "Pergola"
+        }
+      ]
+    },
+    {
+      "parent_category": "Tuinontwerp",
+      "subcategories": [
+        {
+          "name": "Tuinontwerp"
+        }
+      ]
+    },
+    {
+      "parent_category": "Grondwerken",
+      "subcategories": [
+        {
+          "name": "Graaf- en grondwerken"
+        },
+        {
+          "name": "Terras / oprit aanleggen"
+        },
+        {
+          "name": "Klinkerwerken"
+        },
+        {
+          "name": "Afbraakwerken"
+        },
+        {
+          "name": "Rioleringswerken"
+        }
+      ]
+    },
+    {
+      "parent_category": "Zwembaden & vijvers",
+      "subcategories": [
+        {
+          "name": "Vijver/zwemvijver"
+        },
+        {
+          "name": "Zwembad aanleggen"
+        },
+        {
+          "name": "Zwembad kopen"
+        },
+        {
+          "name": "Zwembadbouw"
+        },
+        {
+          "name": "Zelfbouw met begeleiding"
+        }
+      ]
+    },
+    {
+      "parent_category": "Chapewerken",
+      "subcategories": [
+        {
+          "name": "Chapewerken"
+        },
+        {
+          "name": "Vloerisolatie"
+        }
+      ]
+    },
+    {
+      "parent_category": "Vloer- en tegelwerken",
+      "subcategories": [
+        {
+          "name": "Terras / oprit aanleggen"
+        },
+        {
+          "name": "Klinkerwerken"
+        },
+        {
+          "name": "Chapewerken"
+        },
+        {
+          "name": "Vloerisolatie"
+        },
+        {
+          "name": "Vloer- en tegelwerken"
+        },
+        {
+          "name": "Betonvloeren"
+        },
+        {
+          "name": "Gietvloeren"
+        },
+        {
+          "name": "Steentapijt"
+        },
+        {
+          "name": "Kurkvloer"
+        },
+        {
+          "name": "Laminaat leggen"
+        },
+        {
+          "name": "Parket (leggen & herstellen)"
+        }
+      ]
+    },
+    {
+      "parent_category": "Dak- en gevelreiniging",
+      "subcategories": [
+        {
+          "name": "Dakreiniging"
+        },
+        {
+          "name": "Gevelreiniging"
+        },
+        {
+          "name": "Terras / oprit reinigen"
+        },
+        {
+          "name": "Zonnepanelen reinigen"
+        }
+      ]
+    },
+    {
+      "parent_category": "Schoonmaak",
+      "subcategories": [
+        {
+          "name": "Dakreiniging"
+        },
+        {
+          "name": "Gevelreiniging"
+        },
+        {
+          "name": "Terras / oprit reinigen"
+        },
+        {
+          "name": "Ramen wassen"
+        },
+        {
+          "name": "Zonnepanelen reinigen"
+        },
+        {
+          "name": "Algemene schoonmaak"
+        }
+      ]
+    },
+    {
+      "parent_category": "Elektriciteitswerken",
+      "subcategories": [
+        {
+          "name": "Poorten"
+        },
+        {
+          "name": "Alarmsystemen"
+        },
+        {
+          "name": "Camerabewaking"
+        },
+        {
+          "name": "Domotica"
+        },
+        {
+          "name": "Verlichting"
+        },
+        {
+          "name": "Elektriciteitswerken"
+        },
+        {
+          "name": "Elektriciteit aanleggen / vernieuwen"
+        },
+        {
+          "name": "Video- en parlofonie"
+        },
+        {
+          "name": "Toegangscontrole"
+        },
+        {
+          "name": "Laadpalen"
+        },
+        {
+          "name": "Trapliften"
+        },
+        {
+          "name": "Zonnepanelen"
+        },
+        {
+          "name": "Keuring elektriciteit"
+        }
+      ]
+    },
+    {
+      "parent_category": "Sanitair & verwarming",
+      "subcategories": [
+        {
+          "name": "Putboringen"
+        },
+        {
+          "name": "Badkamer renovatie"
+        },
+        {
+          "name": "Sanitair"
+        },
+        {
+          "name": "Vochtbestrijding"
+        },
+        {
+          "name": "Septische put / regenput"
+        },
+        {
+          "name": "Rioleringswerken"
+        },
+        {
+          "name": "Ontstoppingsdienst"
+        },
+        {
+          "name": "Centrale verwarming"
+        },
+        {
+          "name": "Vloerverwarming"
+        },
+        {
+          "name": "Verwarmingsketels"
+        },
+        {
+          "name": "Mazouttank kopen"
+        },
+        {
+          "name": "Kachels"
+        },
+        {
+          "name": "Haarden"
+        },
+        {
+          "name": "Schoorsteenvegen"
+        },
+        {
+          "name": "Airco"
+        },
+        {
+          "name": "Airco onderhoud"
+        },
+        {
+          "name": "Ventilatie"
+        },
+        {
+          "name": "Zonneboilers"
+        },
+        {
+          "name": "Septische- of regenput ledigen"
+        }
+      ]
+    },
+    {
+      "parent_category": "Hernieuwbare energie",
+      "subcategories": [
+        {
+          "name": "Vloerverwarming"
+        },
+        {
+          "name": "Airco"
+        },
+        {
+          "name": "Airco onderhoud"
+        },
+        {
+          "name": "Koeltechniek"
+        },
+        {
+          "name": "Ventilatie"
+        },
+        {
+          "name": "Warmtepompen"
+        },
+        {
+          "name": "Zonnepanelen"
+        },
+        {
+          "name": "Zonneboilers"
+        }
+      ]
+    },
+    {
+      "parent_category": "Ruimingswerken",
+      "subcategories": [
+        {
+          "name": "Putboringen"
+        },
+        {
+          "name": "Septische put / regenput"
+        },
+        {
+          "name": "Rioleringswerken"
+        },
+        {
+          "name": "Ontstoppingsdienst"
+        },
+        {
+          "name": "Mazouttank kopen"
+        },
+        {
+          "name": "Schoorsteenvegen"
+        },
+        {
+          "name": "Mazouttank verwijderen"
+        },
+        {
+          "name": "Mazouttank neutraliseren"
+        },
+        {
+          "name": "Mazouttank reinigen"
+        },
+        {
+          "name": "Septische- of regenput ledigen"
+        },
+        {
+          "name": "Mazouttank keuren"
+        }
+      ]
+    },
+    {
+      "parent_category": "Interieurdesign",
+      "subcategories": [
+        {
+          "name": "Interieuradvies"
+        },
+        {
+          "name": "Winkel- of kantoorinrichting"
+        },
+        {
+          "name": "Interieurarchitect"
+        },
+        {
+          "name": "Raamdecoratie"
+        }
+      ]
+    },
+    {
+      "parent_category": "Renovatiewerken",
+      "subcategories": [
+        {
+          "name": "Terras / oprit aanleggen"
+        },
+        {
+          "name": "Klinkerwerken"
+        },
+        {
+          "name": "Afbraakwerken"
+        },
+        {
+          "name": "Vloerisolatie"
+        },
+        {
+          "name": "Vloer- en tegelwerken"
+        },
+        {
+          "name": "Kurkvloer"
+        },
+        {
+          "name": "Laminaat leggen"
+        },
+        {
+          "name": "Parket (leggen & herstellen)"
+        },
+        {
+          "name": "Elektriciteitswerken"
+        },
+        {
+          "name": "Badkamer renovatie"
+        },
+        {
+          "name": "Vochtbestrijding"
+        },
+        {
+          "name": "Aanbouw"
+        },
+        {
+          "name": "Renovatiewerken"
+        },
+        {
+          "name": "Bouwen"
+        },
+        {
+          "name": "Totaalrenovatie"
+        },
+        {
+          "name": "Gyprocwerken"
+        },
+        {
+          "name": "Pleisterwerken"
+        },
+        {
+          "name": "Behang- en schilderwerken"
+        },
+        {
+          "name": "Gevel kaleien"
+        },
+        {
+          "name": "Gyproc plafond / spanplafond"
+        },
+        {
+          "name": "Schrijnwerken"
+        },
+        {
+          "name": "Zolder- en dakisolatie"
+        },
+        {
+          "name": "Muurisolatie"
+        },
+        {
+          "name": "Interieurbouw"
+        },
+        {
+          "name": "Systeemplafonds"
+        },
+        {
+          "name": "Metselwerken"
+        },
+        {
+          "name": "Geluidsisolatie"
+        }
+      ]
+    },
+    {
+      "parent_category": "Schilder- en decoatiewerken",
+      "subcategories": [
+        {
+          "name": "Kurkvloer"
+        },
+        {
+          "name": "Laminaat leggen"
+        },
+        {
+          "name": "Parket (leggen & herstellen)"
+        },
+        {
+          "name": "Raamdecoratie"
+        },
+        {
+          "name": "Gyprocwerken"
+        },
+        {
+          "name": "Behang- en schilderwerken"
+        },
+        {
+          "name": "Gevel kaleien"
+        },
+        {
+          "name": "Gyproc plafond / spanplafond"
+        }
+      ]
+    },
+    {
+      "parent_category": "Schrijnwerken",
+      "subcategories": [
+        {
+          "name": "Carport"
+        },
+        {
+          "name": "Terrasoverkapping"
+        },
+        {
+          "name": "Tuinhuis"
+        },
+        {
+          "name": "Poolhouse"
+        },
+        {
+          "name": "Kurkvloer"
+        },
+        {
+          "name": "Laminaat leggen"
+        },
+        {
+          "name": "Parket (leggen & herstellen)"
+        },
+        {
+          "name": "Badkamer renovatie"
+        },
+        {
+          "name": "Winkel- of kantoorinrichting"
+        },
+        {
+          "name": "Pergola"
+        },
+        {
+          "name": "Gyprocwerken"
+        },
+        {
+          "name": "Gyproc plafond / spanplafond"
+        },
+        {
+          "name": "Schrijnwerken"
+        },
+        {
+          "name": "Interieurbouw"
+        },
+        {
+          "name": "Keukenrenovatie"
+        },
+        {
+          "name": "Kasten op maat"
+        },
+        {
+          "name": "Meubelen op maat"
+        },
+        {
+          "name": "Trappen"
+        },
+        {
+          "name": "Binnendeuren"
+        },
+        {
+          "name": "Systeemplafonds"
+        },
+        {
+          "name": "Vliegenramen"
+        },
+        {
+          "name": "Houtskeletbouw"
+        }
+      ]
+    },
+    {
+      "parent_category": "Ramen en deuren",
+      "subcategories": [
+        {
+          "name": "Carport"
+        },
+        {
+          "name": "Terrasoverkapping"
+        },
+        {
+          "name": "Pergola"
+        },
+        {
+          "name": "Vliegenramen"
+        },
+        {
+          "name": "Ramen en deuren"
+        },
+        {
+          "name": "Glaswerk"
+        },
+        {
+          "name": "Garagepoorten"
+        },
+        {
+          "name": "Herstellingen veranda"
+        },
+        {
+          "name": "Veranda bouwen"
+        },
+        {
+          "name": "Zonwering"
+        },
+        {
+          "name": "Screens"
+        },
+        {
+          "name": "Rolluiken"
+        }
+      ]
+    },
+    {
+      "parent_category": "Betonwerken",
+      "subcategories": [
+        {
+          "name": "Keerwanden"
+        },
+        {
+          "name": "Chapewerken"
+        },
+        {
+          "name": "Vloerisolatie"
+        },
+        {
+          "name": "Betonvloeren"
+        },
+        {
+          "name": "Gietvloeren"
+        },
+        {
+          "name": "Steentapijt"
+        },
+        {
+          "name": "(Prefab) betonbouw"
+        },
+        {
+          "name": "Betonwerken"
+        },
+        {
+          "name": "Kelderdichting"
+        },
+        {
+          "name": "Betonnen kelder"
+        },
+        {
+          "name": "Betonnen trap"
+        },
+        {
+          "name": "Betonboringen"
+        },
+        {
+          "name": "Ruwbouwwerken"
+        }
+      ]
+    },
+    {
+      "parent_category": "Ruwbouw",
+      "subcategories": [
+        {
+          "name": "Graaf- en grondwerken"
+        },
+        {
+          "name": "Putboringen"
+        },
+        {
+          "name": "Afbraakwerken"
+        },
+        {
+          "name": "Chapewerken"
+        },
+        {
+          "name": "Septische put / regenput"
+        },
+        {
+          "name": "Rioleringswerken"
+        },
+        {
+          "name": "Aanbouw"
+        },
+        {
+          "name": "Zolder- en dakisolatie"
+        },
+        {
+          "name": "Betonnen kelder"
+        },
+        {
+          "name": "Betonnen trap"
+        },
+        {
+          "name": "Betonboringen"
+        },
+        {
+          "name": "Ruwbouwwerken"
+        },
+        {
+          "name": "Metselwerken"
+        },
+        {
+          "name": "Voegwerken"
+        },
+        {
+          "name": "Dakwerken"
+        },
+        {
+          "name": "Dakrenovatie"
+        },
+        {
+          "name": "Gevelbekleding"
+        },
+        {
+          "name": "Gevelrenovatie"
+        },
+        {
+          "name": "Woningbouw"
+        }
+      ]
+    },
+    {
+      "parent_category": "Bouwen & verbouwen",
+      "subcategories": [
+        {
+          "name": "Aanbouw"
+        },
+        {
+          "name": "Renovatiewerken"
+        },
+        {
+          "name": "Bouwen"
+        },
+        {
+          "name": "Industriebouw"
+        },
+        {
+          "name": "Totaalrenovatie"
+        },
+        {
+          "name": "Houtskeletbouw"
+        },
+        {
+          "name": "(Prefab) betonbouw"
+        },
+        {
+          "name": "Woningbouw"
+        },
+        {
+          "name": "Prefab / modulair bouwen"
+        }
+      ]
+    },
+    {
+      "parent_category": "Isolatie",
+      "subcategories": [
+        {
+          "name": "Vloerisolatie"
+        },
+        {
+          "name": "Zolder- en dakisolatie"
+        },
+        {
+          "name": "Muurisolatie"
+        },
+        {
+          "name": "Kelderdichting"
+        },
+        {
+          "name": "Gevelrenovatie"
+        },
+        {
+          "name": "Geluidsisolatie"
+        },
+        {
+          "name": "Spouwmuurisolatie"
+        }
+      ]
+    },
+    {
+      "parent_category": "Architect",
+      "subcategories": [
+        {
+          "name": "Tuinontwerp"
+        },
+        {
+          "name": "Interieurarchitect"
+        },
+        {
+          "name": "Woningbouw"
+        },
+        {
+          "name": "Architect"
+        }
+      ]
+    },
+    {
+      "parent_category": "Metaalbewerking",
+      "subcategories": [
+        {
+          "name": "Poorten"
+        },
+        {
+          "name": "Carport"
+        },
+        {
+          "name": "Terrasoverkapping"
+        },
+        {
+          "name": "Tuinhuis"
+        },
+        {
+          "name": "Poolhouse"
+        },
+        {
+          "name": "Aanbouw"
+        },
+        {
+          "name": "Pergola"
+        },
+        {
+          "name": "Industriebouw"
+        },
+        {
+          "name": "Metaalbouw"
+        },
+        {
+          "name": "Laswerken"
+        }
+      ]
+    },
+    {
+      "parent_category": "Dakwerken",
+      "subcategories": [
+        {
+          "name": "Dakreiniging"
+        },
+        {
+          "name": "Aanbouw"
+        },
+        {
+          "name": "Zolder- en dakisolatie"
+        },
+        {
+          "name": "Metselwerken"
+        },
+        {
+          "name": "Dakwerken"
+        },
+        {
+          "name": "Dakrenovatie"
+        },
+        {
+          "name": "Roofing / EPDM"
+        },
+        {
+          "name": "Dakgoten"
+        },
+        {
+          "name": "Dakramen / dakkapel"
+        }
+      ]
+    },
+    {
+      "parent_category": "Gevelwerken",
+      "subcategories": [
+        {
+          "name": "Gevelreiniging"
+        },
+        {
+          "name": "Gevel kaleien"
+        },
+        {
+          "name": "Metselwerken"
+        },
+        {
+          "name": "Voegwerken"
+        },
+        {
+          "name": "Gevelbekleding"
+        },
+        {
+          "name": "Gevelrenovatie"
+        },
+        {
+          "name": "Spouwmuurisolatie"
+        },
+        {
+          "name": "Steenstrips"
+        },
+        {
+          "name": "Crepi"
+        },
+        {
+          "name": "Spuitkurk"
+        }
+      ]
+    },
+    {
+      "parent_category": "klusjesdienst",
+      "subcategories": [
+        {
+          "name": "Tuinonderhoud"
+        },
+        {
+          "name": "Tuinwerken"
+        },
+        {
+          "name": "Tuinaanleg"
+        },
+        {
+          "name": "Grasmatten / gazon aanleg"
+        },
+        {
+          "name": "Kunstgras"
+        },
+        {
+          "name": "Afsluitingen"
+        },
+        {
+          "name": "Poorten"
+        },
+        {
+          "name": "Boomverzorging"
+        },
+        {
+          "name": "Graaf- en grondwerken"
+        },
+        {
+          "name": "Terras / oprit aanleggen"
+        },
+        {
+          "name": "Klinkerwerken"
+        },
+        {
+          "name": "Vloer- en tegelwerken"
+        },
+        {
+          "name": "Kurkvloer"
+        },
+        {
+          "name": "Laminaat leggen"
+        },
+        {
+          "name": "Parket (leggen & herstellen)"
+        },
+        {
+          "name": "Terras / oprit reinigen"
+        },
+        {
+          "name": "Elektriciteitswerken"
+        },
+        {
+          "name": "Badkamer renovatie"
+        },
+        {
+          "name": "Sanitair"
+        },
+        {
+          "name": "Centrale verwarming"
+        },
+        {
+          "name": "Verwarmingsketels"
+        },
+        {
+          "name": "Schoorsteenvegen"
+        },
+        {
+          "name": "Ventilatie"
+        },
+        {
+          "name": "Renovatiewerken"
+        },
+        {
+          "name": "Gyprocwerken"
+        },
+        {
+          "name": "Pleisterwerken"
+        },
+        {
+          "name": "Behang- en schilderwerken"
+        },
+        {
+          "name": "Gyproc plafond / spanplafond"
+        },
+        {
+          "name": "Schrijnwerken"
+        },
+        {
+          "name": "Zolder- en dakisolatie"
+        },
+        {
+          "name": "Interieurbouw"
+        },
+        {
+          "name": "Vliegenramen"
+        },
+        {
+          "name": "Herstellingen veranda"
+        },
+        {
+          "name": "Metselwerken"
+        },
+        {
+          "name": "Klusjesman"
+        },
+        {
+          "name": "Dakgoten"
+        }
+      ]
+    },
+    {
+      "parent_category": "Elektro hersteldienst",
+      "subcategories": [
+        {
+          "name": "Witgoed herstelling"
+        }
+      ]
+    },
+    {
+      "parent_category": "Verhuis",
+      "subcategories": [
+        {
+          "name": "Verhuizen"
+        }
+      ]
+    },
+    {
+      "parent_category": "Taxi",
+      "subcategories": [
+        {
+          "name": "Taxi / luchthaven- en personenvervoer"
+        }
+      ]
+    },
+    {
+      "parent_category": "Autocar",
+      "subcategories": [
+        {
+          "name": "Bus huren / busreizen"
+        }
+      ]
+    },
+    {
+      "parent_category": "Transport",
+      "subcategories": [
+        {
+          "name": "Transportvervoer"
+        }
+      ]
+    },
+    {
+      "parent_category": "Ongediertebestrijding",
+      "subcategories": [
+        {
+          "name": "Ongedierte bestrijden"
+        }
+      ]
+    },
+    {
+      "parent_category": "Vochtbestrijding",
+      "subcategories": [
+        {
+          "name": "Vochtbestrijding"
+        },
+        {
+          "name": "Lekdetectie"
+        },
+        {
+          "name": "Kelderdichting"
+        }
+      ]
+    },
+    {
+      "parent_category": "Putboringen",
+      "subcategories": [
+        {
+          "name": "Putboringen"
+        }
+      ]
+    },
+    {
+      "parent_category": "Containerbouw",
+      "subcategories": [
+        {
+          "name": "Containerwoningen"
+        }
+      ]
+    }
+  ]
+}

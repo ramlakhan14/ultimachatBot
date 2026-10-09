@@ -1,0 +1,297 @@
+var __ultimachatbot__URL = __ultimachatbot__getWidgetURL();
+
+function __ultimachatbot__ready(fn) {
+  if (document.readyState !== "loading") {
+    fn();
+    return;
+  }
+  document.addEventListener("DOMContentLoaded", fn);
+}
+
+
+const widgetStyle = `
+.ultimachatbot-widget {
+  position: fixed;
+  z-index: 9999999;
+  max-height: calc(100% - 30px);
+  right: 20px;
+  bottom: 20px;
+  min-width: 80px;
+  height: 80px;
+  width: 80px;
+  max-width: calc(100% - 40px);
+}
+.ultimachatbot-widget.wb-align-left {
+  left: 0;
+  right: auto;
+}
+.ultimachatbot-widget.wb-expand {
+  width: 416px;
+  height: 610px;
+  min-width: 370px;
+}
+.ultimachatbot-widget.wb-maximize {
+  width: 50%;
+  height: calc(100% - 30px)
+}
+@media only screen and (device-width: 768px),
+       only screen and (max-width: 768px){
+  .ultimachatbot-widget.wb-maximize {
+    width: 100%;
+    height: 100%;
+  }
+  .ultimachatbot-widget {
+    right: 0;
+    bottom: 0;
+  }
+  .ultimachatbot-widget.wb-expand {
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    left: 0;
+    right: 10px;
+    bottom: 10px;
+    top: 0;
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+.ultimachatbot__msg-popup {
+  position: fixed;
+  bottom: 106px;
+  max-width: fit-content;
+  display: flex;
+  flex-direction: column;
+  max-width: 320px;
+  opacity: 0;
+  align-items: end;
+  transition: all 0.3s ease-in-out;
+  transform: translate3d(0px, 10px, 0px);
+}
+.ultimachatbot__msg-popup.ultimachatbot__msg-popup-left {
+  left: 20px;
+}
+.ultimachatbot__msg-popup.ultimachatbot__msg-popup-right {
+  right: 20px;
+}
+.ultimachatbot__msg-popup.ultimachatbot__msg-popup--show {
+  opacity: 1;
+  transform: translate3d(0px, 0px, 0px);
+}
+
+.ultimachatbot__msg-popup-item {
+  cursor: pointer;
+  padding: 20px;
+  background-color: #FFF;
+  display: inline-flex;
+  width: auto;
+  margin: 5px 0;
+  font-size: 14px;
+  border-radius: 6px;
+  line-height: 1.5;
+  color: #333;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.ultimachatbot__msg-popup-close-btn {
+  cursor: pointer;
+  border-radius: 12px;
+  background-color: #fff;
+  font-size: 12px;
+  color: rgba(0,0,0,0.65);
+  border: 1px solid rgba(0,0,0,0.18);
+  opacity: 0;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.ultimachatbot__msg-popup-close-btn svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.ultimachatbot__msg-popup:hover .ultimachatbot__msg-popup-close-btn {
+  opacity: 0.8;
+}
+.ultimachatbot__msg-popup .ultimachatbot__msg-popup-close-btn:hover {
+  opacity: 1;
+}
+`
+
+
+function __ultimachatbot__addIframe() {
+  var ifrm = document.createElement("iframe");
+  const kbId = __ultimachatbot__getChatbotId();
+  ifrm.setAttribute("class", "ultimachatbot-widget");
+  ifrm.setAttribute("id", "ultimachatbot-widget");
+  ifrm.setAttribute("data-powered-by", "https://www.ultimabot.ai/");
+  ifrm.setAttribute("frameborder", "0");
+
+  const scriptEl = document.getElementById("__ultimabotSdk__");
+  const container = scriptEl.getAttribute('container') || scriptEl.getAttribute('data-container');
+
+  const currentUrl = scriptEl.getAttribute('data-current-url');
+  // console.log('currentUrl:', currentUrl);
+
+  if (container) {
+    const $container = document.querySelector(container);
+    if ($container) {
+      $container.appendChild(ifrm);
+    }
+  } else {
+    var styleSheet = document.createElement('style');
+    styleSheet.innerText = widgetStyle;
+    document.head.appendChild(styleSheet);
+    document.body.appendChild(ifrm);
+  }
+
+  const baseUrl = __ultimachatbot__getBaseURL();
+  const aToken = __ultimachatbot__getAT();
+  ifrm.setAttribute("src", __ultimachatbot__URL + '?kbId=' + kbId + '&baseUrl=' + baseUrl + '&at=' + aToken + '&currentUrl=' + currentUrl);
+  return ifrm;
+}
+
+function addPopup(config) {
+  // console.log("config.welcomeMessages", config.welcomeMessages);
+
+  const welcomeMessagesHTML = config.welcomeMessages.map(msg => {
+    return `<div class="ultimachatbot__msg-popup-item">${msg}</div>`
+  }).join('');
+  const closeBtn = `<button class="ultimachatbot__msg-popup-close-btn" id="ultimachatbot__msg-popup-close-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+  </button>`
+  let popupPositionClass = ''
+  if (config.position === 'left') {
+    popupPositionClass = 'ultimachatbot__msg-popup-left'
+  } else {
+    popupPositionClass = 'ultimachatbot__msg-popup-right'
+  }
+  document.body.insertAdjacentHTML('beforeend', `<div id="ultimachatbot__msg-popup" class="ultimachatbot__msg-popup ${popupPositionClass}">${closeBtn}${welcomeMessagesHTML}</div>`);
+  document.getElementById('ultimachatbot__msg-popup-close-btn').onclick = () => {
+    removePopup();
+  }
+  const popupItems = document.getElementsByClassName('ultimachatbot__msg-popup-item');
+  for (const popupItem of popupItems) {
+    popupItem.onclick = () => {
+      openWidget();
+    };
+  }
+  setTimeout(() => {
+    const popup = document.getElementById('ultimachatbot__msg-popup');
+    // console.log("popup", config.popupDelay);
+
+    if (popup) {
+      popup.classList.add('ultimachatbot__msg-popup--show');
+    }
+  }, config.popupDelay || 500);
+}
+
+function openWidget() {
+  const iframe = document.getElementById("ultimachatbot-widget");
+
+  iframe.contentWindow.postMessage({ messageType: 'ultimachatbot:expandWidget' }, '*');
+}
+
+function removePopup() {
+  const popup = document.getElementById('ultimachatbot__msg-popup');
+  if (popup) {
+    popup.classList.remove('ultimachatbot__msg-popup--show');
+    localStorage.setItem("ultimachatbot__popupRemoved", true);
+    setTimeout(() => {
+      popup.remove();
+    }, 500);
+  }
+}
+
+function __ultimachatbot__getEventHandler(ifrm) {
+  const iframe = document.getElementById("ultimachatbot-widget");
+  const scriptEl = document.getElementById("__ultimabotSdk__");
+  const container = scriptEl.getAttribute('container') || scriptEl.getAttribute('data-container');
+  function ultimachatbotEventHandler(e) {
+    if (e.data === "ultimachatbot:widget_expand") {
+      removePopup();
+      iframe.classList.add("wb-expand");
+    } else if (e.data === "ultimachatbot:widget_collapse") {
+      setTimeout(() => {
+        iframe.classList.remove("wb-expand", "wb-maximize");
+      }, 350);
+    } else if (e.data === "ultimachatbot:widget_maximize") {
+      iframe.classList.add("wb-maximize");
+    } else if (e.data === "ultimachatbot:widget_minimize") {
+      iframe.classList.remove("wb-maximize");
+    } else if (e.data && e.data.messageType === 'ultimachatbot:widget_config') {
+      const config = e.data.config || {};
+      if (config.position === 'left') {
+        iframe.classList.add("wb-align-left");
+      }
+      const popupRemoved = JSON.parse(localStorage.getItem("ultimachatbot__popupRemoved"));
+
+
+      if (!popupRemoved && config.showAsPopup && config.welcomeMessages && config.welcomeMessages.length > 0 && !container) {
+        addPopup(config);
+      }
+    } else if (e.data === "ultimachatbot:widget_clear_history") {
+      localStorage.removeItem('sessionId');
+      localStorage.removeItem('isManualChat');
+      e.source.postMessage({ messageType: 'ultimachatbot:recieve_session_id', sessionId: '' }, '*');
+    } else if (e.data === "ultimachatbot:request_meta_data") {
+      const scriptEl = document.getElementById("__ultimabotSdk__");
+      const container = scriptEl.getAttribute('container') || scriptEl.getAttribute('data-container');
+      e.source.postMessage({ messageType: 'ultimachatbot:recieve_meta_data', url: window.location.href, container: container }, '*');
+    } else if (e.data === "ultimachatbot:request_session_id") {
+      const sessionId = localStorage.getItem("sessionId");
+      e.source.postMessage({ messageType: 'ultimachatbot:recieve_session_id', sessionId: sessionId }, '*');
+    } else if (e.data && e.data.messageType === 'ultimachatbot:recieve_new_session_id') {
+      localStorage.setItem("sessionId", e.data.sessionId);
+    } else if (e.data === 'ultimachatbot:request_is_manual_chat') {
+      e.source.postMessage({ messageType: 'ultimachatbot:recieve_is_manual_chat', isManualChat: JSON.parse(localStorage.getItem("isManualChat") || 'false') }, '*');
+    } else if (e.data && e.data.messageType === 'ultimachatbot:update_is_manual_chat') {
+      localStorage.setItem("isManualChat", e.data.isManualChat);
+    }
+  }
+
+  return ultimachatbotEventHandler;
+}
+
+function __ultimachatbot__addEventListeners(ifrm) {
+  window.onmessage = __ultimachatbot__getEventHandler(ifrm);
+}
+
+function __ultimachatbot__getChatbotId() {
+  const scriptEl = document.getElementById("__ultimabotSdk__");
+  const chatbotId = scriptEl.getAttribute('chatbotId') || scriptEl.getAttribute('data-chatbot-id');
+  return chatbotId;
+}
+
+function __ultimachatbot__getWidgetURL() {
+  const scriptEl = document.getElementById("__ultimabotSdk__");
+  const baseURL = scriptEl.getAttribute('widgetUrl') || scriptEl.getAttribute('data-widget-url') || process.env.WW_WIDGET_URL;
+  return baseURL || 'https://widget.ultimabot.ai/';
+}
+
+function __ultimachatbot__getBaseURL() {
+  const scriptEl = document.getElementById("__ultimabotSdk__");
+  const baseURL = scriptEl.getAttribute('baseUrl') || scriptEl.getAttribute('data-base-url') || process.env.WW_BASE_URL;
+  return baseURL || 'https://api.ultimabot.ai';
+}
+
+function __ultimachatbot__getAT() {
+  const scriptEl = document.getElementById("__ultimabotSdk__");
+  const aTocken = scriptEl.getAttribute('at');
+  return aTocken;
+}
+
+__ultimachatbot__ready(() => {
+  setTimeout(() => {
+    var ifrm = __ultimachatbot__addIframe();
+    __ultimachatbot__addEventListeners(ifrm);
+  }, 1000);
+});

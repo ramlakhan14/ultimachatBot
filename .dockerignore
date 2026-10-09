@@ -1,0 +1,12 @@
+Dockerfile
+.dockerignore
+node_modules
+npm - debug.log
+dist
+migrations
+workers
+frontend
+storage
+storage1
+.vscode
+service_account.json

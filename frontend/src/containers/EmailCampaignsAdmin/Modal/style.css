@@ -1,0 +1,10 @@
+/* Make the search input full width */
+.multiSelectContainer .searchBox {
+  width: 300px !important;
+}
+
+/* Ensure placeholder text is fully visible */
+.multiSelectContainer .searchBox input {
+  width: 300px !important;
+  white-space: nowrap;
+}

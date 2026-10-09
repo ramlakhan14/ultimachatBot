@@ -1,0 +1,106 @@
+.date-picker {
+  width: 330px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.calendar-header {
+  padding: 8px;
+  background-color: #fff;
+}
+
+.month-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.current-month {
+  font-size: 16px;
+  font-weight: 600;
+  color: #6C757D;
+}
+
+.nav-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #666;
+  padding: 4px 8px;
+}
+
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+  background-color: #fff;
+  padding: 0 8px 0px 8px;
+}
+
+.calendar-day {
+  height: 38px;
+  width: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+}
+
+
+.calendar-day:hover {
+  background-color: #f0f0f0;
+}
+
+.calendar-day.empty {
+  cursor: default;
+}
+
+.calendar-day.current {
+  background-color: #2977FF;
+  color: white;
+}
+
+.calendar-day.selected {
+  border: 2px solid #2977FF;
+  color: #333;
+}
+
+.calendar-day.selected .day-content .meeting-indicator{
+  display: none;
+}
+
+.meeting-indicator {
+  width: 5px;
+  height: 5px;
+  background-color: #2977FF;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 0px;
+}
+
+.day-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  position: relative;
+}

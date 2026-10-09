@@ -1,0 +1,106 @@
+.cancaleBtn:hover{
+  background-color: #5C636A !important;
+}
+.tableHd Th{
+  font-size: 16px!important;
+  color: #212529;
+  font-weight: 700 !important;
+}
+.chip{
+  background: #9800ff!important;
+}
+.Completed{
+  padding: 1px 4px;
+  border-radius: 100px;
+  background-color: #1987541A;
+  color: #198754;
+  font-size: 10px;
+  font-weight: 500;
+}
+.multiSelectContainer input {
+  width: 250px !important;
+}
+.multiSelectContainer.multiselect-container-css .searchWrapper {
+  width: 250px !important;
+}
+.Running{
+  padding: 1px 4px;
+  border-radius: 100px;
+  background-color: #DBEAFE;
+  color: #1E40AF;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 18px;
+}
+.Schedule{
+  padding: 1px 4px;
+  border-radius: 100px;
+  background-color: #FEF9C3;
+  color: #854D0E;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 18px;
+}
+.initiated{
+  padding: 1px 4px;
+  border-radius: 100px;
+  color: #CA6510;
+  background: #FD7E141A;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 18px;
+}
+
+.failed{
+  padding: 1px 5px;
+  border-radius: 100px;
+  font-size: 10px;
+  font-weight: 500;
+  color: #ca1010;
+  background: rgb(253 20 20 / 10%);
+  line-height: 18px;
+}
+
+.paused{
+  padding: 1px 4px;
+  border-radius: 100px;
+  font-size: 10px;
+  font-weight: 500;
+  background: rgb(253, 230, 138);
+  color: rgb(245, 158, 11);
+  line-height: 18px;
+}
+.modalTextHeding{
+  font-size: 14px;
+  font-weight: 500;
+  color: #212529;
+  margin-bottom: 5px;
+  line-height: 16px;
+}
+
+
+.modalTextPara{
+  font-size: 14px;
+  font-weight: 400;
+  color: #6C757D;
+}
+
+
+.newCampaigHeding{
+  font-size: 16px;
+  font-weight: 700;
+  color: #1A202C;
+}
+
+
+.newCampaigPara{
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  color: #212529;
+}
+
+.questionDeleteBtn {
+  position: absolute !important;
+  left: 0;
+  z-index: 9;
+}

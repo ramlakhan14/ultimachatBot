@@ -1,0 +1,71 @@
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .header h2 {
+    margin: 0;
+  }
+ 
+  
+  .trained-on-container {
+    padding: 20px;
+  }
+  
+  .trained-on-container h2 {
+    margin-bottom: 10px;
+  }
+  
+  .trained-on-container ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .trained-on-container li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  
+  .trained-on-container a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .trained-on-container a:hover {
+    text-decoration: underline;
+  }
+  
+  .trained-status {
+    margin-left: 10px;
+    background-color: #EBFFEE;
+    color: #009951;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+  }
+  
+  .close-icon {
+    margin-left: auto; /* Push to the right */
+    color: #000;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  
+.paraTrained{
+    font-size: 16px;
+    font-weight: 400;
+    color: #6C757D;
+}
+  
+  .add-link-button {
+    background-color: #fff; /* Blue background color */
+    color: #6C757D; /* White text color */
+    border: 2px solid #6C757D; /* Remove default border */
+    padding: 4px 8px; /* Add padding for better look */
+    border-radius: 5px; /* Round the corners */
+    cursor: pointer; /* Change cursor to pointer when hovering */
+  }

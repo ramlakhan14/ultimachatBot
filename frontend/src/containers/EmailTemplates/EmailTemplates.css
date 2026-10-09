@@ -1,0 +1,25 @@
+
+.tox-tbtn {
+  background-color: #e3f3ff !important;
+}
+
+.tox-tbtn:hover {
+  background-color: #D0C1FF !important;
+  border-color: #BBAAFF !important;
+}
+
+.tox .tox-tbtn svg {
+  fill: #6C757D !important;
+}
+
+.tox-toolbar__primary{
+  background-color: #e3f3ff !important;
+}
+.line-clamp-1{
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+  width: 200px;
+  height: 38px;
+}

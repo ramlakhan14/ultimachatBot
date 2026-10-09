@@ -1,0 +1,63 @@
+
+td{
+  vertical-align: middle !important;
+}
+
+.formContainer{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+}
+.Verified{
+    padding: 4.2px 7.8px;
+    border-radius: 100px;
+    background-color: #1987541A;
+    color: #198754;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .Running{
+    padding: 4.2px 7.8px;
+    border-radius: 100px;
+    background-color: #DBEAFE;
+    color: #1E40AF;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .Pending{
+    padding: 4.2px 7.8px;
+    border-radius: 100px;
+    background-color: #FEF9C3;
+    color: #854D0E;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .initiated{
+    padding: 4.2px 7.8px;
+    border-radius: 100px;
+    color: #CA6510;
+    background: #FD7E141A;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  
+  .paused{
+    padding: 4.2px 7.8px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #ca1010;
+    background: rgb(253 20 20 / 10%);
+  }
+
+  .bannerImgHeight{
+    height:calc(100vh - 180px);
+  }
+  
+  @media only screen and (max-width: 1600px) {
+    .bannerImgHeight{
+      height:calc(100vh);
+    }
+  }

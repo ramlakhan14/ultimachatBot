@@ -1,0 +1,230 @@
+[
+  {
+    "name": "UTC-12:00 (Etc/GMT+12)",
+    "offset": "-12:00",
+    "country": "Baker Island (US)",
+    "origin": "Etc/GMT+12"
+  },
+  {
+    "name": "UTC-11:00 (Pacific/Pago_Pago)",
+    "offset": "-11:00",
+    "country": "American Samoa",
+    "origin": "Pacific/Pago_Pago"
+  },
+  {
+    "name": "UTC-10:00 (Pacific/Honolulu)",
+    "offset": "-10:00",
+    "country": "Hawaii (US)",
+    "origin": "Pacific/Honolulu"
+  },
+  {
+    "name": "UTC-09:30 (Pacific/Marquesas)",
+    "offset": "-09:30",
+    "country": "Marquesas Islands (French Polynesia)",
+    "origin": "Pacific/Marquesas"
+  },
+  {
+    "name": "UTC-09:00 (America/Anchorage)",
+    "offset": "-09:00",
+    "country": "Alaska (US)",
+    "origin": "America/Anchorage"
+  },
+  {
+    "name": "UTC-08:00 (America/Los_Angeles)",
+    "offset": "-08:00",
+    "country": "Pacific Time (US, Canada)",
+    "origin": "America/Los_Angeles"
+  },
+  {
+    "name": "UTC-07:00 (America/Denver)",
+    "offset": "-07:00",
+    "country": "Mountain Time (US, Canada)",
+    "origin": "America/Denver"
+  },
+  {
+    "name": "UTC-06:00 (America/Chicago)",
+    "offset": "-06:00",
+    "country": "Central Time (US, Canada), Mexico City",
+    "origin": "America/Chicago"
+  },
+  {
+    "name": "UTC-05:00 (America/New_York)",
+    "offset": "-05:00",
+    "country": "Eastern Time (US, Canada), Colombia",
+    "origin": "America/New_York"
+  },
+  {
+    "name": "UTC-04:00 (America/Halifax)",
+    "offset": "-04:00",
+    "country": "Atlantic Time (Canada), Venezuela",
+    "origin": "America/Halifax"
+  },
+  {
+    "name": "UTC-03:30 (America/St_Johns)",
+    "offset": "-03:30",
+    "country": "Newfoundland (Canada)",
+    "origin": "America/St_Johns"
+  },
+  {
+    "name": "UTC-03:00 (America/Argentina/Buenos_Aires)",
+    "offset": "-03:00",
+    "country": "Argentina, Brazil (East)",
+    "origin": "America/Argentina/Buenos_Aires"
+  },
+  {
+    "name": "UTC-02:00 (Atlantic/South_Georgia)",
+    "offset": "-02:00",
+    "country": "South Georgia Islands",
+    "origin": "Atlantic/South_Georgia"
+  },
+  {
+    "name": "UTC-01:00 (Atlantic/Azores)",
+    "offset": "-01:00",
+    "country": "Azores (Portugal)",
+    "origin": "Atlantic/Azores"
+  },
+  {
+    "name": "UTC+00:00 (Europe/London)",
+    "offset": "+00:00",
+    "country": "United Kingdom, Portugal",
+    "origin": "Europe/London"
+  },
+  {
+    "name": "UTC+01:00 (Europe/Berlin)",
+    "offset": "+01:00",
+    "country": "Central Europe (Germany, France)",
+    "origin": "Europe/Berlin"
+  },
+  {
+    "name": "UTC+02:00 (Africa/Johannesburg)",
+    "offset": "+02:00",
+    "country": "South Africa, Egypt",
+    "origin": "Africa/Johannesburg"
+  },
+  {
+    "name": "UTC+03:00 (Asia/Riyadh)",
+    "offset": "+03:00",
+    "country": "Saudi Arabia, East Africa",
+    "origin": "Asia/Riyadh"
+  },
+  {
+    "name": "UTC+03:30 (Asia/Tehran)",
+    "offset": "+03:30",
+    "country": "Iran",
+    "origin": "Asia/Tehran"
+  },
+  {
+    "name": "UTC+04:00 (Asia/Dubai)",
+    "offset": "+04:00",
+    "country": "UAE, Azerbaijan",
+    "origin": "Asia/Dubai"
+  },
+  {
+    "name": "UTC+04:30 (Asia/Kabul)",
+    "offset": "+04:30",
+    "country": "Afghanistan",
+    "origin": "Asia/Kabul"
+  },
+  {
+    "name": "UTC+05:00 (Asia/Karachi)",
+    "offset": "+05:00",
+    "country": "Pakistan, Uzbekistan",
+    "origin": "Asia/Karachi"
+  },
+  {
+    "name": "UTC+05:30 (Asia/Kolkata)",
+    "offset": "+05:30",
+    "country": "India, Sri Lanka",
+    "origin": "Asia/Kolkata"
+  },
+  {
+    "name": "UTC+05:45 (Asia/Kathmandu)",
+    "offset": "+05:45",
+    "country": "Nepal",
+    "origin": "Asia/Kathmandu"
+  },
+  {
+    "name": "UTC+06:00 (Asia/Dhaka)",
+    "offset": "+06:00",
+    "country": "Bangladesh, Bhutan",
+    "origin": "Asia/Dhaka"
+  },
+  {
+    "name": "UTC+06:30 (Asia/Yangon)",
+    "offset": "+06:30",
+    "country": "Myanmar",
+    "origin": "Asia/Yangon"
+  },
+  {
+    "name": "UTC+07:00 (Asia/Bangkok)",
+    "offset": "+07:00",
+    "country": "Thailand, Vietnam",
+    "origin": "Asia/Bangkok"
+  },
+  {
+    "name": "UTC+08:00 (Asia/Shanghai)",
+    "offset": "+08:00",
+    "country": "China, Malaysia",
+    "origin": "Asia/Shanghai"
+  },
+  {
+    "name": "UTC+08:45 (Australia/Eucla)",
+    "offset": "+08:45",
+    "country": "Australia (Eucla)",
+    "origin": "Australia/Eucla"
+  },
+  {
+    "name": "UTC+09:00 (Asia/Tokyo)",
+    "offset": "+09:00",
+    "country": "Japan, Korea",
+    "origin": "Asia/Tokyo"
+  },
+  {
+    "name": "UTC+09:30 (Australia/Adelaide)",
+    "offset": "+09:30",
+    "country": "Australia (Adelaide, Darwin)",
+    "origin": "Australia/Adelaide"
+  },
+  {
+    "name": "UTC+10:00 (Australia/Sydney)",
+    "offset": "+10:00",
+    "country": "Australia (Sydney, Melbourne)",
+    "origin": "Australia/Sydney"
+  },
+  {
+    "name": "UTC+10:30 (Australia/Lord_Howe)",
+    "offset": "+10:30",
+    "country": "Australia (Lord Howe Island)",
+    "origin": "Australia/Lord_Howe"
+  },
+  {
+    "name": "UTC+11:00 (Pacific/Guadalcanal)",
+    "offset": "+11:00",
+    "country": "Solomon Islands, Vanuatu",
+    "origin": "Pacific/Guadalcanal"
+  },
+  {
+    "name": "UTC+12:00 (Pacific/Auckland)",
+    "offset": "+12:00",
+    "country": "New Zealand, Fiji",
+    "origin": "Pacific/Auckland"
+  },
+  {
+    "name": "UTC+12:45 (Pacific/Chatham)",
+    "offset": "+12:45",
+    "country": "New Zealand (Chatham Islands)",
+    "origin": "Pacific/Chatham"
+  },
+  {
+    "name": "UTC+13:00 (Pacific/Apia)",
+    "offset": "+13:00",
+    "country": "Samoa, Tonga",
+    "origin": "Pacific/Apia"
+  },
+  {
+    "name": "UTC+14:00 (Pacific/Kiritimati)",
+    "offset": "+14:00",
+    "country": "Kiribati (Line Islands)",
+    "origin": "Pacific/Kiritimati"
+  }
+]

@@ -1,0 +1,95 @@
+.searchContainer {
+  display: flex;
+  // gap: 10px;
+  width: 100%;
+}
+
+.searchInput {
+  flex: 1;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.emailList {
+  background: white;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #edf2f7;
+  font-size: 15px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.emailItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  // border-bottom: 1px solid #edf2f7;
+  position: relative;
+}
+
+.emailItem:last-child {
+  border-bottom: none;
+}
+
+.emailItem:hover {
+  background-color: #f8f9fa;
+}
+
+.removeIcon {
+  width: 16px;
+  height: 16px;
+  color: #718096;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.emailItem:hover .removeIcon {
+  opacity: 1;
+}
+
+.emailList::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: unset;
+	background-color: #fff;
+	border-radius: 10px;
+}
+
+.emailList::-webkit-scrollbar
+{
+	width: 6px;
+	background-color: #F5F5F5;
+}
+
+.emailList::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-color: #D9D9D9;
+}
+
+.suggestionsBox {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  margin-top: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.suggestionItem {
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.suggestionItem:hover {
+  background-color: #f7fafc;
+}

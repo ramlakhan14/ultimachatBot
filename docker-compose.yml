@@ -1,0 +1,70 @@
+version: '3'
+
+services:
+  redis:
+    image: redis:alpine
+    expose:
+      - "6379"
+
+  mongodb:
+    image: mongo:latest
+    volumes:
+      - db-data:/data/db
+    expose:
+      - "27017"
+
+  web:
+    build: .
+    command: node dist/main.js
+    ports:
+      - "3000:3000"
+    environment:
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      NODE_ENV: production
+      LOG_DIR: /var/log/ultimachatbot
+    depends_on:
+      - redis
+      - mongodb
+    volumes:
+      - pdf-storage:/storage1 # shared storage for PDFs
+      - /var/log/ultimachatbot:/var/log/ultimachatbot # daily log files on server
+
+  nodejs_worker:
+    build: .
+    command: node dist/crawler.main.js
+    environment:
+      NODE_ENV: production
+      LOG_DIR: /var/log/ultimachatbot
+    depends_on:
+      - redis
+      - mongodb
+    volumes:
+      - pdf-storage:/storage1 # optional but safe
+      - /var/log/ultimachatbot:/var/log/ultimachatbot # share same log dir as web
+
+  python_worker:
+    build: ./workers
+    depends_on:
+      - redis
+      - mongodb
+    volumes:
+      - pdf-storage:/storage1 # python worker now sees the PDFs
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3030:80"
+    depends_on:
+      - web
+
+  widget:
+    build: ./widget
+    ports:
+      - "3031:80"
+    depends_on:
+      - web
+
+volumes:
+  db-data:
+  pdf-storage: # shared persistent volume

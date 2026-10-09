@@ -1,0 +1,171 @@
+.activeNav {
+    font-weight: bold;
+    border-radius: 20px;
+    width: 100%;
+}
+
+
+ul li a {
+  display: block;
+  padding: 4px;
+  width: 100%;
+}
+
+.activeNavCollapsed {
+    font-weight: bold;
+padding: 5px!important;
+margin: 5px 0px;
+border-radius: 6px;
+    // margin-left: -8px;
+}
+.activeNav svg path, .activeNavCollapsed svg path {
+    // font-weight: bold;
+    // fill: #2977FF;
+    fill: #2977FF;
+}
+ul li:first-child .activeNav svg path {
+    // font-weight: bold;
+    // stroke: #2977FF;
+    color: #2977FF;
+    // fill: none;
+}
+.appLoading {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    z-index: 999;
+    flex-shrink: 0;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 700;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #999;
+}
+
+.usageCont {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+    background: #F7FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    &.usageContExceeded {
+        border-color: var(--chakra-colors-red-500);
+        background-color: var(--chakra-colors-red-50);
+    }
+}
+.usagePlan {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    margin-bottom: 8px;
+    /* identical to box height, or 140% */
+    
+    
+    /* gray/700 */
+    text-transform:capitalize;
+    color: #1A202C;
+}
+
+
+.usgaeNumbers {
+    font-family: 'Inter';
+    font-style: normal;
+    font-size: 16px;
+    line-height: 24px;
+    /* identical to box height, or 150% */
+
+
+    /* gray/700 */
+
+    color: #1A202C;
+    font-weight: 600;
+}
+.usageLabel {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    /* identical to box height, or 143% */
+
+
+    /* gray/600 */
+    // margin-top: 5px;
+    color: #212529;
+}
+.usageUpgradeBtn {
+    width: 100%;
+}
+.progressbar {
+    
+    background: #DEE2E6 !important;
+    height: 14px !important;
+    // width: 100%;
+    border-radius: 2px !important;
+}
+
+// activeNav:hover {
+//     color: #2977FF !important;
+//     transition: color 0.2s ease;
+// }
+
+.sidebar {
+     a:hover span {
+        // color: #2977FF !important;
+        transition: color 0.2s ease;
+    }
+
+    //  a:hover .bullet,
+    // :global(.chakra-button):hover .bullet {
+    //     // background-color: #2977FF !important;
+    // }
+
+    // :global(.chakra-text):hover,
+    // :global(.chakra-button):hover :global(.chakra-text) {
+    //     color: #2977FF !important;
+    //     transition: color 0.2s ease;
+    // }
+
+    // // Hover on button affects icon and bullet inside
+    // :global(.chakra-button):hover svg path {
+    //     fill: #2977FF !important;
+    //     transition: fill 0.2s ease;
+    // }
+
+    // :global(.chakra-button):hover :global(.chakra-box) {
+    //     // background-color: #2977FF !important;
+    //     transition: background-color 0.2s ease;
+    // }
+
+    // // Hover on NavLink/Link affects icon and bullet inside
+    // a:hover svg path {
+    //     fill: #2977FF !important;
+    //     transition: fill 0.2s ease;
+    // }
+
+    // a:hover :global(.chakra-box) {
+    //     background-color: #2977FF !important;
+    //     transition: background-color 0.2s ease;
+    // }
+
+    // a:hover :global(.chakra-text) {
+    //     color: #2977FF !important;
+    //     transition: color 0.2s ease;
+    // }
+}
+
+
+// ul li a {
+//   display: block;
+// //   padding: 8px 16px !important;
+// }

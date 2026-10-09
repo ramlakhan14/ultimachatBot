@@ -1,0 +1,47 @@
+.formContainer{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+}
+.inbound{
+  padding: 4.2px 7.8px;
+  border-radius: 100px;
+  background-color: #1987541A;
+  color: #198754;
+  font-size: 12px;
+  font-weight: 500;
+}
+.outbound{
+  padding: 4.2px 7.8px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #ca1010;
+  background: rgb(253 20 20 / 10%);
+}
+td {
+  // text-transform: capitalize !important;
+  font-size: 14px !important;
+  font-size: 400 !important;
+}
+
+.useIn{
+  padding: 4.2px 7.8px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1F2937;
+  background: #F3F4F6;
+}
+
+.bannerImgHeight{
+  height:calc(100vh - 180px);
+}
+
+@media only screen and (max-width: 1600px) {
+  .bannerImgHeight{
+    height:calc(100vh);
+  }
+}
